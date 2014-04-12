@@ -1,5 +1,7 @@
 package smbModel.players.states;
 
-public class Grown {
+import smbModel.players.PlayerState;
+
+public class Grown extends PlayerState{
 
 }

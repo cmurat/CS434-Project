@@ -1,5 +1,7 @@
 package smbModel.players.states;
 
-public class Original {
+import smbModel.players.PlayerState;
+
+public class Original extends PlayerState{
 
 }

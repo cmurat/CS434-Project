@@ -1,5 +1,7 @@
 package smbModel.players;
 
-public class Luigi {
+import smbModel.PlayerCharacter;
+
+public class Luigi extends PlayerCharacter{
 
 }

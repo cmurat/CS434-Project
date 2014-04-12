@@ -1,5 +1,7 @@
 package smbModel.players.states;
 
-public class Fiery {
+import smbModel.players.PlayerState;
 
+public class Fiery extends PlayerState{
+	
 }
