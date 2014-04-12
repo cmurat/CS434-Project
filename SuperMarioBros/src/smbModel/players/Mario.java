@@ -1,5 +1,13 @@
 package smbModel.players;
 
-public class Mario {
+import smbModel.PlayerCharacter;
+
+public class Mario extends PlayerCharacter {
+
+	@Override
+	public void jump() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

@@ -1,5 +1,6 @@
 package smbModel;
 
-public class PlayerCharacter extends Entity {
-
+public abstract class PlayerCharacter extends Entity {
+	public abstract void jump();
+	
 }

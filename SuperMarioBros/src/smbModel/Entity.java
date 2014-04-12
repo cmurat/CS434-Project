@@ -1,5 +1,10 @@
 package smbModel;
 
-public class Entity {
+public abstract class Entity {
+
+	public void jump() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
