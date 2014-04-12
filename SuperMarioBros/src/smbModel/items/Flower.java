@@ -1,5 +1,7 @@
 package smbModel.items;
 
-public class Flower {
+import smbModel.Item;
+
+public class Flower extends Item {
 
 }

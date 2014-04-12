@@ -1,5 +1,7 @@
 package smbModel.items;
 
-public class Coin {
+import smbModel.Item;
+
+public class Coin extends Item {
 
 }
