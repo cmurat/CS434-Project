@@ -1,5 +1,14 @@
 package smbModel;
 
-public class Level {
+import java.util.ArrayList;
 
+public class Level {
+	ArrayList<Enemy> enemies;
+	ArrayList<Item> items;
+	
+	public Level() {
+		
+	}
+	
+	
 }
