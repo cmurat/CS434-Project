@@ -4,10 +4,8 @@ import smbModel.PlayerCharacter;
 
 public class Mario extends PlayerCharacter {
 
-	@Override
-	public void jump() {
-		// TODO Auto-generated method stub
-		
+	public Mario(int px, int py, int speed) {
+		super(px, py, speed);
 	}
 
 }
