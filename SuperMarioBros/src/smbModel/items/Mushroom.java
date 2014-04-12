@@ -1,5 +1,7 @@
 package smbModel.items;
 
-public class Mushroom {
+import smbModel.Item;
 
+public class Mushroom extends Item {
+	
 }

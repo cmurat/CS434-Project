@@ -1,5 +1,7 @@
 package smbModel.enemies;
 
-public class Shellcreeper {
+import smbModel.Enemy;
+
+public class Shellcreeper extends Enemy {
 
 }

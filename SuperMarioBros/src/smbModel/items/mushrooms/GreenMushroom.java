@@ -1,5 +1,7 @@
 package smbModel.items.mushrooms;
 
-public class GreenMushroom {
+import smbModel.items.Mushroom;
+
+public class GreenMushroom extends Mushroom {
 
 }

@@ -1,5 +1,5 @@
 package smbModel;
 
-public class PlayerCharacter {
+public class PlayerCharacter extends Entity {
 
 }

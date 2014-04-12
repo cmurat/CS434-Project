@@ -1,5 +1,7 @@
 package smbModel.enemies;
 
-public class Sidestepper {
+import smbModel.Enemy;
+
+public class Sidestepper extends Enemy {
 
 }

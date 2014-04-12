@@ -1,5 +1,5 @@
 package smbModel;
 
-public class Enemy {
+public class Enemy extends Entity {
 
 }
