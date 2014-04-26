@@ -6,8 +6,12 @@ import smbModel.players.Mario;
 public class Game {
 	
 	MovingEntity entity;
+	LevelLoader loader;
+	
 	public Game(GameController gameController) {
 		entity = new Mario(0,0);
+		loader = new LevelLoader();
+		Level level = loader.loadLevel();
 	}
 
 	public void movePlayerLeft() {

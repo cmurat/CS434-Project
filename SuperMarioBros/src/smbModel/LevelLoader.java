@@ -15,11 +15,13 @@ import smbModel.tiles.Floor;
 
 public class LevelLoader {
 	public static void main(String[] args){
-		new LevelLoader().loadLevel();
+		System.out.println(new LevelLoader().loadLevel());
 	}
+	
 	public Level loadLevel() {
-		
-		return null;
+		Map map = createMap();
+		Level level = createLevel(map);
+		return level;
 	}
 	
 	private Map createMap() {
@@ -64,6 +66,9 @@ public class LevelLoader {
 	private Tile getTile(char tileChar, int column, int row) {
 		Tile tile = null;
 		switch(tileChar) {
+		case 'x':
+			System.out.println("x");
+			break;
 		case 'c':
 			tile = new CoinBox(row, column);
 			break;
@@ -86,8 +91,14 @@ public class LevelLoader {
 		ArrayList<Item> items = new ArrayList<Item>();
 		for (int row = 0; row < charMap.length; row++) {
 			for (int column = 0; column < charMap.length; column++) {
-				enemies.add(getEnemy(charMap[row][column], column, row));
-				items.add(getItem(charMap[row][column], column, row));
+				Enemy enemy = getEnemy(charMap[row][column], column, row);
+				Item item = getItem(charMap[row][column], column, row);
+				if(enemy != null) {
+					enemies.add(enemy);
+				}
+				if(item != null) {
+					items.add(item);
+				}
 			}
 		}
 		

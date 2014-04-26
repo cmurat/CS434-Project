@@ -25,5 +25,8 @@ public class Level {
 		return items;
 	}
 	
+	public String toString() {
+		return enemies.size() + " " + items.size();
+	}
 	
 }
