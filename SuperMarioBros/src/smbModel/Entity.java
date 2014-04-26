@@ -16,13 +16,18 @@ public class Entity {
 	public void moveUp() {
 
 	}
+	public void moveDown() {
+
+	}
 
 	public void moveLeft() {
 		px -= speed;
+		System.out.println(px);
 	}
 
 	public void moveRight() {
 		px += speed;
+		System.out.println(px);
 
 	}
 
@@ -43,9 +48,4 @@ public class Entity {
 		return str;
 	}
 	
-	public static void main(String[] args) {
-		PlayerCharacter character = new Mario(0, 0, 5);
-		character.moveLeft();
-		System.out.println(character.toString());
-	}
 }
