@@ -1,9 +1,9 @@
 package smbModel;
 
-public class PlayerCharacter extends Entity {
+public class PlayerCharacter extends MovingEntity {
 
-	public PlayerCharacter(int px, int py, int speed) {
-		super(px, py, speed);
+	public PlayerCharacter(int px, int py) {
+		super(px, py);
 		// TODO Auto-generated constructor stub
 	}	
 

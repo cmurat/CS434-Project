@@ -4,8 +4,8 @@ import smbModel.Item;
 
 public class Mushroom extends Item {
 
-	public Mushroom(int px, int py, int speed) {
-		super(px, py, speed);
+	public Mushroom(int px, int py) {
+		super(px, py);
 		// TODO Auto-generated constructor stub
 	}
 	

@@ -4,8 +4,8 @@ import smbModel.Enemy;
 
 public class Shellcreeper extends Enemy {
 
-	public Shellcreeper(int px, int py, int speed) {
-		super(px, py, speed);
+	public Shellcreeper(int row, int column) {
+		super(row, column);
 		// TODO Auto-generated constructor stub
 	}
 

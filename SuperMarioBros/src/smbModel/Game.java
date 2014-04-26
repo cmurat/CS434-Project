@@ -4,9 +4,10 @@ import smbController.GameController;
 import smbModel.players.Mario;
 
 public class Game {
-	Entity entity;
+	
+	MovingEntity entity;
 	public Game(GameController gameController) {
-		entity = new Mario(0,0,5);
+		entity = new Mario(0,0);
 	}
 
 	public void movePlayerLeft() {
