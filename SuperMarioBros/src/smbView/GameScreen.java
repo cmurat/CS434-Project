@@ -19,7 +19,7 @@ public class GameScreen extends JFrame {
 		setVisible(true);
 		add(levelView);
 
-		setSize(512, 512);
+		setSize(880, 520);
 		levelView.addImages();
 		levelView.addEnemies();
 		repaint();

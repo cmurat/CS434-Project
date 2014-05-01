@@ -31,12 +31,14 @@ public class LevelView extends JPanel {
 	public void addImages() {
 		JLabel label = null;
 		for (int i = 0; i < map.getTiles().length; i++) {
-			for (int j = 0; j < map.getTiles().length; j++) {
+			for (int j = 0; j < map.getTiles()[0].length; j++) {
 				Tile tile = map.getTiles()[i][j];
-				label = new JLabel(new ImageIcon(tile.getImagePath()));
-				label.setLocation(tile.getLocation());
-				label.setSize(Entity.BASE_SIZE, Entity.BASE_SIZE);
-				add(label);
+				if(tile != null) {
+					label = new JLabel(new ImageIcon(tile.getImagePath()));
+					label.setLocation(tile.getLocation());
+					label.setSize(Entity.BASE_SIZE, Entity.BASE_SIZE);
+					add(label);
+				}
 			}
 		}
 	}
