@@ -1,4 +1,4 @@
-package smbModel.tiles;
+package smbModel;
 
 import java.awt.Point;
 

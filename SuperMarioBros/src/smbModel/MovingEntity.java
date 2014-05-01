@@ -1,7 +1,6 @@
 package smbModel;
 
 import smbModel.players.Mario;
-import smbModel.tiles.Entity;
 
 public class MovingEntity extends Entity{
 	private double speed;

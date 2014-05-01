@@ -26,4 +26,11 @@ public class GameController {
 		}
 
 	}
+	public Map getMap() {
+		return map;
+	}
+
+	public void setMap(Map map) {
+		this.map = map;
+	}
 }

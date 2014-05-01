@@ -2,13 +2,17 @@ package smbModel;
 
 public class Map {
 	private char[][] charMap;
-	private Tile[][] map;
-	public Map(char[][] mapRepresentation, Tile[][] map) {
+	private Tile[][] tiles;
+	public Map(char[][] mapRepresentation, Tile[][] tiles) {
 		this.charMap = mapRepresentation;
-		this.map = map;
+		this.tiles = tiles;
 	}
 	
 	public char[][] getCharMap() {
 		return charMap;
+	}
+	
+	public Tile[][] getTiles() {
+		return tiles;
 	}
 }
