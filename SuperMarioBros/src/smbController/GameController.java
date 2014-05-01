@@ -1,9 +1,12 @@
 package smbController;
 
+import java.util.Map;
+
 import smbModel.Game;
 
 public class GameController {
 	Game game;
+	Map map;
 	public GameController() {
 		game = new Game(this);	
 	}

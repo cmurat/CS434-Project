@@ -13,12 +13,13 @@ public class GameScreen extends JFrame {
 	public GameScreen(GameController controller) {
 		this.controller = controller;
 		JPanel p = new JPanel();
-		label = new JLabel("Key Listener!");
+		label = new JLabel("Mario");
 		p.add(label);
 		add(p);
 		addKeyListener(new PlayerListener(controller));
-		setSize(200, 100);
+		setSize(800, 480);
 		setVisible(true);
+		
 	}
 	
 	public static void main(String[] args) {
