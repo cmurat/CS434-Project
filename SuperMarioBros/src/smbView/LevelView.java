@@ -5,34 +5,53 @@ import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import smbModel.Enemy;
 import smbModel.Entity;
+import smbModel.Level;
 import smbModel.Map;
 import smbModel.Tile;
 
 public class LevelView extends JPanel {
+	Level level;
 	Map map;
 
-	public LevelView(Map map) {
-		this.map = map;
-		this.setLayout(null);
+	public LevelView(Level level) {
+		this.level = level;
+		map = level.getMap();
+		setLayout(null);
 	}
 
 	public void addImages() {
 		JLabel label = null;
-		for (int i = 0; i < this.map.getTiles().length; i++) {
-			for (int j = 0; j < this.map.getTiles().length; j++) {
-				Tile tile = this.map.getTiles()[i][j];
+		for (int i = 0; i < map.getTiles().length; i++) {
+			for (int j = 0; j < map.getTiles().length; j++) {
+				Tile tile = map.getTiles()[i][j];
 				label = new JLabel(new ImageIcon(tile.getImagePath()));
 				label.setLocation(tile.getLocation());
 				label.setSize(Entity.BASE_SIZE, Entity.BASE_SIZE);
 				add(label);
 			}
 		}
+	}
+
+	public void addEnemies() {
+		JLabel label = null;
+		ArrayList<Enemy> enemies = level.getEnemies();
+		for(Enemy enemy : enemies){
+			System.out.println(enemies.size());
+			label = new JLabel(new ImageIcon(enemy.getImagePath()));
+			label.setLocation(enemy.getLocation());
+			label.setSize(Entity.BASE_SIZE, Entity.BASE_SIZE);
+			add(label);	
+		}
+		
+
 	}
 }

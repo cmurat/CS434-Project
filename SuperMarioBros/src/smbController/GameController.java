@@ -2,14 +2,15 @@ package smbController;
 
 import java.awt.event.KeyEvent;
 import smbModel.Game;
-import smbModel.Map;
+import smbModel.Level;
 
 public class GameController {
 	Game game;
-	Map map;
+	Level level;
 	public GameController() {
 		game = new Game(this);
-		map = game.getLevel().getMap();
+		level = game.getLevel();
+		
 	}
 
 	public void playerHasPressedButton(KeyEvent event) {
@@ -24,11 +25,9 @@ public class GameController {
 		}
 
 	}
-	public Map getMap() {
-		return map;
+
+	public Level getLevel() {
+		return level;
 	}
 
-	public void setMap(Map map) {
-		this.map = map;
-	}
 }

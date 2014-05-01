@@ -6,8 +6,8 @@ public class MovingEntity extends Entity{
 	private double speed;
 	private Level level;
 
-	public MovingEntity(int row, int column, Level level) {
-		super(row, column);
+	public MovingEntity(int row, int column, Level level, String imagePath) {
+		super(row, column, imagePath);
 		setLevel(level);
 	}
 

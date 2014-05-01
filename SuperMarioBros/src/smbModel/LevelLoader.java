@@ -68,8 +68,8 @@ public class LevelLoader {
 	private Tile getTile(char tileChar, int column, int row) {
 		Tile tile = null;
 		switch(tileChar) {
-		case 'x':
-			System.out.println("x");
+		case 'w':
+			System.out.println("w");
 			break;
 		case 'c':
 			tile = new CoinBox(row, column);
@@ -92,7 +92,7 @@ public class LevelLoader {
 		ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 		ArrayList<Item> items = new ArrayList<Item>();
 		for (int row = 0; row < charMap.length; row++) {
-			for (int column = 0; column < charMap.length; column++) {
+			for (int column = 0; column < charMap[0].length; column++) {
 				Enemy enemy = getEnemy(charMap[row][column], column, row);
 				Item item = getItem(charMap[row][column], column, row);
 				if(enemy != null) {
@@ -111,7 +111,7 @@ public class LevelLoader {
 	private Enemy getEnemy(char tileChar, int column, int row) {
 		Enemy enemy = null;
 		switch(tileChar) {
-		case 'x':
+		case 'w':
 			enemy = new Shellcreeper(row, column, null);
 			break;
 		case 'y':

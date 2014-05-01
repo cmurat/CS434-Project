@@ -6,7 +6,7 @@ import smbModel.PlayerCharacter;
 public class Luigi extends PlayerCharacter {
 	
 	public Luigi(int px, int py, Level level) {
-		super(px, py, level);
+		super(px, py, level, " ");
 	}
 
 }

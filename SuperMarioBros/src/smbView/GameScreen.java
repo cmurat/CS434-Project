@@ -15,11 +15,13 @@ public class GameScreen extends JFrame {
 		
 		addKeyListener(new PlayerListener(controller));
 		
-		LevelView levelView = new LevelView(controller.getMap());
+		LevelView levelView = new LevelView(controller.getLevel());
 		setVisible(true);
 		add(levelView);
-		setSize(800, 480);
+
+		setSize(512, 512);
 		levelView.addImages();
-		validate();
+		levelView.addEnemies();
+		repaint();
 	}
 }

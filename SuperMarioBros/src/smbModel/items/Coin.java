@@ -6,7 +6,7 @@ import smbModel.Level;
 public class Coin extends Item {
 
 	public Coin(int px, int py, Level level) {
-		super(px, py, level);
+		super(px, py, level, "Assets/coin.png");
 		// TODO Auto-generated constructor stub
 	}
 

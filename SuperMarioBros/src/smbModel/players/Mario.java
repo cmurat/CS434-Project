@@ -5,7 +5,7 @@ import smbModel.PlayerCharacter;
 
 public class Mario extends PlayerCharacter {
 	public Mario(int px, int py, Level level) {
-		super(px, py, level);
+		super(px, py, level, " ");
 		setSpeed(10);
 	}
 }
