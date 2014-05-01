@@ -1,3 +1,6 @@
+import smbController.GameController;
+import smbView.GameScreen;
+
 
 public class SuperMarioBros {
 
@@ -5,7 +8,9 @@ public class SuperMarioBros {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		System.out.println("Helloysee");
+		GameController controller = new GameController();
+		new GameScreen(controller);
+
 	}
 
 }

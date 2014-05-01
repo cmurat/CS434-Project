@@ -1,14 +1,14 @@
 package smbController;
 
-import java.util.Map;
-
 import smbModel.Game;
+import smbModel.Map;
 
 public class GameController {
 	Game game;
 	Map map;
 	public GameController() {
-		game = new Game(this);	
+		game = new Game(this);
+		map = game.getLevel().getMap();
 	}
 
 	public void playerHasPressedButton(int index) {

@@ -22,10 +22,6 @@ public class GameScreen extends JFrame {
 		
 	}
 	
-	public static void main(String[] args) {
-		GameController controller = new GameController();
-		new GameScreen(controller);
 
-	}
 
 }

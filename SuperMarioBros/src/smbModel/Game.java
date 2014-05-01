@@ -7,11 +7,16 @@ public class Game {
 	
 	MovingEntity entity;
 	LevelLoader loader;
+	private Level level;
 	
 	public Game(GameController gameController) {
 		entity = new Mario(0,0);
 		loader = new LevelLoader();
-		Level level = loader.loadLevel();
+		level = loader.loadLevel();
+	}
+
+	public Level getLevel() {
+		return level;
 	}
 
 	public void movePlayerLeft() {
