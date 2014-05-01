@@ -1,11 +1,12 @@
 package smbModel.items;
 
 import smbModel.Item;
+import smbModel.Level;
 
 public class Coin extends Item {
 
-	public Coin(int px, int py) {
-		super(px, py);
+	public Coin(int px, int py, Level level) {
+		super(px, py, level);
 		// TODO Auto-generated constructor stub
 	}
 

@@ -11,26 +11,28 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import smbModel.Entity;
 import smbModel.Map;
 import smbModel.Tile;
 
 public class LevelView extends JPanel {
 	Map map;
-	
-	public LevelView(Map map){
+
+	public LevelView(Map map) {
 		this.map = map;
+		this.setLayout(null);
 	}
 
 	public void addImages() {
-		 for(int i = 0; i < this.map.getTiles().length; i++) {
-				for(int j = 0; j < this.map.getTiles().length; j++) {
-					Tile tile = this.map.getTiles()[i][j];
-					System.out.println(tile.getImagePath());
-					JLabel label = new JLabel (new ImageIcon(tile.getImagePath()));
-					label.setLocation(tile.getLocation());
-					add();
-			
-				}
-		 }
+		JLabel label = null;
+		for (int i = 0; i < this.map.getTiles().length; i++) {
+			for (int j = 0; j < this.map.getTiles().length; j++) {
+				Tile tile = this.map.getTiles()[i][j];
+				label = new JLabel(new ImageIcon(tile.getImagePath()));
+				label.setLocation(tile.getLocation());
+				label.setSize(Entity.BASE_SIZE, Entity.BASE_SIZE);
+				add(label);
+			}
+		}
 	}
 }

@@ -14,6 +14,8 @@ import smbModel.tiles.CoinBox;
 import smbModel.tiles.Floor;
 
 public class LevelLoader {
+	
+	
 	public static void main(String[] args){
 		System.out.println(new LevelLoader().loadLevel());
 	}
@@ -110,10 +112,10 @@ public class LevelLoader {
 		Enemy enemy = null;
 		switch(tileChar) {
 		case 'x':
-			enemy = new Shellcreeper(row, column);
+			enemy = new Shellcreeper(row, column, null);
 			break;
 		case 'y':
-			enemy = new Sidestepper(row, column);
+			enemy = new Sidestepper(row, column, null);
 			break;
 		}
 		return enemy;
@@ -123,7 +125,7 @@ public class LevelLoader {
 		Item item = null;
 		switch(tileChar) {
 		case 'c':
-			item = new Coin(row, column);
+			item = new Coin(row, column, null);
 			break;
 		}
 		return item;

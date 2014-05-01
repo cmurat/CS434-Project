@@ -4,25 +4,28 @@ import smbModel.players.Mario;
 
 public class MovingEntity extends Entity{
 	private double speed;
+	private Level level;
 
-	public MovingEntity(int row, int column) {
+	public MovingEntity(int row, int column, Level level) {
 		super(row, column);
+		setLevel(level);
 	}
 
 	public void moveUp() {
 
 	}
+	
 	public void moveDown() {
 
 	}
 
 	public void moveLeft() {
-		setX(-speed);
+		changeX(-speed);
 		System.out.println(getX());
 	}
 
 	public void moveRight() {
-		setX(speed);
+		changeX(speed);
 		System.out.println(getX());
 
 	}
@@ -31,7 +34,11 @@ public class MovingEntity extends Entity{
 		return speed;
 	}
 	
-	public double setSpeed(double speed) {
+	public void setLevel(Level level) {
+		this.level = level;
+	}
+	
+	protected double setSpeed(double speed) {
 		return this.speed = speed;
 	}
 

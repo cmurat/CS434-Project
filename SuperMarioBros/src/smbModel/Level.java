@@ -11,6 +11,15 @@ public class Level {
 		this.map = map;
 		this.enemies = enemies;
 		this.items = items;
+
+		setLevelOfEntities(enemies);
+		setLevelOfEntities(items);
+	}
+	
+	private void setLevelOfEntities(ArrayList<? extends MovingEntity> movingEntities) {
+		for (MovingEntity movingEntity : movingEntities) {
+			movingEntity.setLevel(this);
+		}
 	}
 
 	public Map getMap() {

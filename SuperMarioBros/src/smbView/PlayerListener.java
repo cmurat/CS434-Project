@@ -1,11 +1,11 @@
 package smbView;
 
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 import smbController.GameController;
 
-public class PlayerListener implements KeyListener {
+public class PlayerListener extends KeyAdapter {
 	GameController controller;
 
 	public PlayerListener(GameController controller) {
@@ -14,18 +14,6 @@ public class PlayerListener implements KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent event) {
-		controller.playerHasPressedButton(event.getKeyCode());
+		controller.playerHasPressedButton(event);
 	}
-
-	@Override
-	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void keyTyped(KeyEvent arg0) {
-
-	}
-
 }

@@ -4,13 +4,13 @@ import smbController.GameController;
 import smbModel.players.Mario;
 
 public class Game {
-	
-	MovingEntity entity;
+
+	MovingEntity movingEntity;
 	LevelLoader loader;
 	private Level level;
-	
+
 	public Game(GameController gameController) {
-		entity = new Mario(0,0);
+		movingEntity = new Mario(0, 0, level);
 		loader = new LevelLoader();
 		level = loader.loadLevel();
 	}
@@ -20,16 +20,19 @@ public class Game {
 	}
 
 	public void movePlayerLeft() {
-		entity.moveLeft();
+		movingEntity.moveLeft();
 	}
+
 	public void movePlayerRight() {
-		entity.moveRight();
+		movingEntity.moveRight();
 	}
+
 	public void movePlayerUp() {
-		entity.moveUp();
+		movingEntity.moveUp();
 	}
+
 	public void movePlayerDown() {
-		entity.moveDown();
+		movingEntity.moveDown();
 	}
 
 }

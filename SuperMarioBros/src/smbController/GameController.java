@@ -1,5 +1,6 @@
 package smbController;
 
+import java.awt.event.KeyEvent;
 import smbModel.Game;
 import smbModel.Map;
 
@@ -11,17 +12,14 @@ public class GameController {
 		map = game.getLevel().getMap();
 	}
 
-	public void playerHasPressedButton(int index) {
-		if (index == 37) {
+	public void playerHasPressedButton(KeyEvent event) {
+		if (event.getKeyCode() == KeyEvent.VK_LEFT) {
 			game.movePlayerLeft();
-		}
-		if (index == 38) {
+		} else if (event.getKeyCode() == KeyEvent.VK_UP) {
 			game.movePlayerUp();
-		}
-		if (index == 39) {
+		} else if (event.getKeyCode() == KeyEvent.VK_RIGHT) {
 			game.movePlayerRight();
-		}
-		if (index == 40) {
+		} else if (event.getKeyCode() == KeyEvent.VK_DOWN) {
 			game.movePlayerDown();
 		}
 
