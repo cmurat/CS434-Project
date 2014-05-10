@@ -1,13 +1,8 @@
 package smbView;
 
-import java.awt.Graphics;
-import java.awt.GridLayout;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -21,47 +16,64 @@ import smbModel.Tile;
 public class LevelView extends JPanel {
 	Level level;
 	Map map;
-	ArrayList<JLabel> enemyLabels;
+	ArrayList<EntityView> entityViews;
+	ArrayList<JLabel> tileViews;
 
 	public LevelView(Level level) {
 		this.level = level;
-		map = level.getMap();
-		setLayout(null);
-		enemyLabels = new ArrayList<JLabel>();
+		this.map = level.getMap();
+		this.entityViews = new ArrayList<EntityView>();
+		this.tileViews = new ArrayList<JLabel>();
+		setLayout(null);	
+	}
+	
+	public void printLevel() {
+		createTileViews();
+		createEntityViews();
+		addLabels(entityViews);
+		addLabels(tileViews);
 	}
 
-	public void addImages() {
-		JLabel label = null;
+	private void createTileViews() {
+		JLabel tileView = null;
 		for (int i = 0; i < map.getTiles().length; i++) {
 			for (int j = 0; j < map.getTiles()[0].length; j++) {
 				Tile tile = map.getTiles()[i][j];
 				if (tile != null) {
-					label = new JLabel(new ImageIcon(tile.getImagePath()));
-					label.setLocation(tile.getLocation());
-					label.setSize(Entity.BASE_SIZE, Entity.BASE_SIZE);
-					add(label);
+					tileView = new JLabel(new ImageIcon(tile.getImagePath()));
+					tileView.setLocation(tile.getLocation());
+					tileView.setSize(Entity.BASE_SIZE, Entity.BASE_SIZE);
+					tileViews.add(tileView);
 				}
 			}
 		}
 	}
 
-	public void addEnemies() {
-		JLabel label = null;
+	private void createEntityViews() {
 		ArrayList<Enemy> enemies = level.getEnemies();
 		for (Enemy enemy : enemies) {
-			System.out.println(enemies.size());
-			label = new JLabel(new ImageIcon(enemy.getImagePath()));
-			label.setLocation(enemy.getLocation());
-			label.setSize(Entity.BASE_SIZE, Entity.BASE_SIZE);
-			enemyLabels.add(label);
+			entityViews.add(new EntityView(enemy));
+		}
+	}
+	
+	private void addLabels(List<? extends JLabel> labels) {
+		for (JLabel label : labels) {
 			add(label);
 		}
 	}
 
 	public void refresh() {
-		ArrayList<Enemy> enemies = level.getEnemies();
-		for (int i = 0; i < enemies.size(); i++) {
-			enemyLabels.get(i).setLocation(enemies.get(i).getLocation());
+		refreshEntites();
+		refreshPlayer();
+	}
+	
+	private void refreshPlayer() {
+		//TODO player ekle
+	}
+	
+	private void refreshEntites() {
+		for (EntityView entityView : entityViews) {
+			entityView.refresh();
 		}
 	}
 }

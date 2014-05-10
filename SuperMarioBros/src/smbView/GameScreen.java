@@ -21,8 +21,7 @@ public class GameScreen extends JFrame {
 		add(levelView);
 
 		setSize(880, 520);
-		levelView.addImages();
-		levelView.addEnemies();
+		levelView.printLevel();
 		repaint();
 	}
 	public void refresh() {

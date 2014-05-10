@@ -1,5 +1,6 @@
 package smbModel;
 
+import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
 
@@ -50,6 +51,10 @@ public class Entity {
 	
 	public double getY() {
 		return location.getY();
+	}
+	
+	public Dimension getSize() {
+		return bounds.getSize();
 	}
 	
 	public boolean intersects(Rectangle r) {
