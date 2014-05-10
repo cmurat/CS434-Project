@@ -21,11 +21,13 @@ import smbModel.Tile;
 public class LevelView extends JPanel {
 	Level level;
 	Map map;
+	ArrayList<JLabel> enemyLabels;
 
 	public LevelView(Level level) {
 		this.level = level;
 		map = level.getMap();
 		setLayout(null);
+		enemyLabels = new ArrayList<JLabel>();
 	}
 
 	public void addImages() {
@@ -33,7 +35,7 @@ public class LevelView extends JPanel {
 		for (int i = 0; i < map.getTiles().length; i++) {
 			for (int j = 0; j < map.getTiles()[0].length; j++) {
 				Tile tile = map.getTiles()[i][j];
-				if(tile != null) {
+				if (tile != null) {
 					label = new JLabel(new ImageIcon(tile.getImagePath()));
 					label.setLocation(tile.getLocation());
 					label.setSize(Entity.BASE_SIZE, Entity.BASE_SIZE);
@@ -46,14 +48,20 @@ public class LevelView extends JPanel {
 	public void addEnemies() {
 		JLabel label = null;
 		ArrayList<Enemy> enemies = level.getEnemies();
-		for(Enemy enemy : enemies){
+		for (Enemy enemy : enemies) {
 			System.out.println(enemies.size());
 			label = new JLabel(new ImageIcon(enemy.getImagePath()));
 			label.setLocation(enemy.getLocation());
 			label.setSize(Entity.BASE_SIZE, Entity.BASE_SIZE);
-			add(label);	
+			enemyLabels.add(label);
+			add(label);
 		}
-		
+	}
 
+	public void refresh() {
+		ArrayList<Enemy> enemies = level.getEnemies();
+		for (int i = 0; i < enemies.size(); i++) {
+			enemyLabels.get(i).setLocation(enemies.get(i).getLocation());
+		}
 	}
 }

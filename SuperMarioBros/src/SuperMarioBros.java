@@ -12,8 +12,9 @@ public class SuperMarioBros {
 	 */
 	public static void main(String[] args) throws IOException {
 		GameController controller = new GameController();
-		new GameScreen(controller);
-
+		while(true){
+			controller.refresh();
+		}
 	}
 
 }

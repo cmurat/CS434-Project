@@ -10,12 +10,13 @@ import smbController.GameController;
 public class GameScreen extends JFrame {
 	JLabel label;
 	GameController controller;
+	LevelView levelView;
 	public GameScreen(GameController controller) throws IOException {
 		this.controller = controller;
 		
 		addKeyListener(new PlayerListener(controller));
 		
-		LevelView levelView = new LevelView(controller.getLevel());
+		levelView = new LevelView(controller.getLevel());
 		setVisible(true);
 		add(levelView);
 
@@ -23,5 +24,8 @@ public class GameScreen extends JFrame {
 		levelView.addImages();
 		levelView.addEnemies();
 		repaint();
+	}
+	public void refresh() {
+		levelView.refresh();
 	}
 }

@@ -1,15 +1,20 @@
 package smbController;
 
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+
 import smbModel.Game;
 import smbModel.Level;
+import smbView.GameScreen;
 
 public class GameController {
 	Game game;
 	Level level;
-	public GameController() {
+	GameScreen gameScreen;
+	public GameController() throws IOException {
 		game = new Game(this);
 		level = game.getLevel();
+		gameScreen = new GameScreen(this);
 		
 	}
 
@@ -28,6 +33,10 @@ public class GameController {
 
 	public Level getLevel() {
 		return level;
+	}
+
+	public void refresh() {
+		gameScreen.refresh();
 	}
 
 }

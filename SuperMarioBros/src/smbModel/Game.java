@@ -10,9 +10,10 @@ public class Game {
 	private Level level;
 
 	public Game(GameController gameController) {
-		movingEntity = new Mario(0, 0, level);
 		loader = new LevelLoader();
 		level = loader.loadLevel();
+		movingEntity = level.getEnemies().get(0);
+		movingEntity.setSpeed(5);
 	}
 
 	public Level getLevel() {
