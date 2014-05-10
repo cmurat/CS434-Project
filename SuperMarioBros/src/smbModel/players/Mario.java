@@ -1,11 +1,11 @@
 package smbModel.players;
 
 import smbModel.Level;
-import smbModel.PlayerCharacter;
+import smbModel.Player;
 
-public class Mario extends PlayerCharacter {
+public class Mario extends Player {
 	public Mario(int px, int py, Level level) {
-		super(px, py, level, "Assets/");
+		super(px, py, level);
 		setSpeed(10);
 	}
 }

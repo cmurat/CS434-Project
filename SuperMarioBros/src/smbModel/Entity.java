@@ -5,7 +5,7 @@ import java.awt.Point;
 import java.awt.Rectangle;
 
 public class Entity {
-	private String imagePath; 
+	protected String imagePath; 
 	
 	public static final int BASE_SIZE = 32;
 	

@@ -1,12 +1,12 @@
 package smbModel.players;
 
 import smbModel.Level;
-import smbModel.PlayerCharacter;
+import smbModel.Player;
 
-public class Luigi extends PlayerCharacter {
+public class Luigi extends Player {
 	
 	public Luigi(int px, int py, Level level) {
-		super(px, py, level, " ");
+		super(px, py, level);
 	}
 
 }

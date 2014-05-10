@@ -5,15 +5,13 @@ import smbModel.players.Mario;
 
 public class Game {
 
-	MovingEntity movingEntity;
+	
 	LevelLoader loader;
 	private Level level;
 
 	public Game(GameController gameController) {
 		loader = new LevelLoader();
 		level = loader.loadLevel();
-		movingEntity = level.getEnemies().get(0);
-		movingEntity.setSpeed(5);
 	}
 
 	public Level getLevel() {
@@ -21,19 +19,19 @@ public class Game {
 	}
 
 	public void movePlayerLeft() {
-		movingEntity.moveLeft();
+		level.movePlayerLeft();
 	}
 
 	public void movePlayerRight() {
-		movingEntity.moveRight();
+		level.movePlayerRight();
 	}
 
 	public void movePlayerUp() {
-		movingEntity.moveUp();
+		level.movePlayerUp();
 	}
 
 	public void movePlayerDown() {
-		movingEntity.moveDown();
+		level.movePlayerDown();
 	}
 
 }

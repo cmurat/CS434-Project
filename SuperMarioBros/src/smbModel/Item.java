@@ -1,4 +1,4 @@
-package smbModel;
+ package smbModel;
 
 public class Item extends MovingEntity {
 

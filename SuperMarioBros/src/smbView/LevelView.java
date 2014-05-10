@@ -6,6 +6,7 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.text.PlainView;
 
 import smbModel.Enemy;
 import smbModel.Entity;
@@ -18,18 +19,23 @@ public class LevelView extends JPanel {
 	Map map;
 	ArrayList<EntityView> entityViews;
 	ArrayList<JLabel> tileViews;
+	EntityView playerView;
 
 	public LevelView(Level level) {
 		this.level = level;
 		this.map = level.getMap();
 		this.entityViews = new ArrayList<EntityView>();
 		this.tileViews = new ArrayList<JLabel>();
+		System.out.println(level.getPlayer().getImagePath());
+		this.playerView = new EntityView(level.getPlayer());
+		
 		setLayout(null);	
 	}
 	
 	public void printLevel() {
 		createTileViews();
 		createEntityViews();
+		addPlayerView();
 		addLabels(entityViews);
 		addLabels(tileViews);
 	}
@@ -56,6 +62,9 @@ public class LevelView extends JPanel {
 		}
 	}
 	
+	private void addPlayerView(){
+		entityViews.add(playerView);
+	}
 	private void addLabels(List<? extends JLabel> labels) {
 		for (JLabel label : labels) {
 			add(label);
