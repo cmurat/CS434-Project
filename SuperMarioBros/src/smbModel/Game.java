@@ -33,5 +33,30 @@ public class Game {
 	public void movePlayerDown() {
 		level.movePlayerDown();
 	}
+	
+	public void refresh(){
+		level.moveEntities();
+		
+	}
+
+	public void stopPlayerLeft() {
+		level.stopPlayerLeft();
+		
+	}
+
+	public void stopPlayerUp() {
+		level.stopPlayerUp();
+		
+	}
+
+	public void stopPlayerRight() {
+		level.stopPlayerRight();
+		
+	}
+
+	public void stopPlayerDown() {
+		level.stopPlayerDown();
+		
+	}
 
 }

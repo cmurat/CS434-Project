@@ -21,6 +21,7 @@ public class Entity {
 	
 	public String getImagePath() {
 		return imagePath;
+		
 	}
 
 	public void changeX(double px) {

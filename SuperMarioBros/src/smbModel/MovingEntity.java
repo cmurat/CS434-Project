@@ -1,8 +1,10 @@
 package smbModel;
 
+import java.util.ArrayList;
+
 import smbModel.players.Mario;
 
-public class MovingEntity extends Entity{
+public abstract class MovingEntity extends Entity{
 	private double speed;
 	private Level level;
 
@@ -10,23 +12,44 @@ public class MovingEntity extends Entity{
 		super(row, column, imagePath);
 		setLevel(level);
 	}
+	
+	public void  checkCollision(){
+		ArrayList<MovingEntity> entities = level.getEntities();
+		for(MovingEntity movingEntity : entities){
+			if(movingEntity.intersects(bounds)){
+				collide(movingEntity);
+			}
+		}
+		
+	}
+	
+	public abstract void collide(MovingEntity movingEntity);
+	public abstract void collideWithPlayer();
+	public abstract void collideWithEnemy();
+	public abstract void collideWithTile();
+	
+	public void move() {
+		
+	}
 
+	private void move(double horizontalSpeed, double verticalSpeed) {
+		changeX(horizontalSpeed);
+		changeY(verticalSpeed);
+	}
 	public void moveUp() {
-
+		move(0, speed);
 	}
 	
 	public void moveDown() {
-
+		move(0, -speed);
 	}
 
 	public void moveLeft() {
-		changeX(-speed);
-		System.out.println(getX());
+		move(-speed, 0);
 	}
 
 	public void moveRight() {
-		changeX(speed);
-		System.out.println(getX());
+		move(speed , 0);
 
 	}
 

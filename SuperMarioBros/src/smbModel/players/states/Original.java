@@ -18,7 +18,7 @@ public class Original extends PlayerState{
 
 	@Override
 	public void previousState() {
-		// TODO Auto-generated method stub
+		System.out.println("Deadd");
 		
 	}
 

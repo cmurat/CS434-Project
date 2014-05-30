@@ -15,5 +15,30 @@ public class Player extends MovingEntity {
 		this.state = state;
 		this.imagePath = state.getImagePath();
 	}
+
+	@Override
+	public void collide(MovingEntity movingEntity) {
+		movingEntity.collideWithPlayer();
+		
+	}
+
+	@Override
+	public void collideWithPlayer() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void collideWithEnemy() {
+		state.previousState();
+		
+	}
+
+	@Override
+	public void collideWithTile() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 }

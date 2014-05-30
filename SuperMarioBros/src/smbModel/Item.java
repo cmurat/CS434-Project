@@ -7,4 +7,27 @@ public class Item extends MovingEntity {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public void collide(MovingEntity movingEntity) {
+		
+	}
+
+	@Override
+	public void collideWithPlayer() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void collideWithEnemy() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void collideWithTile() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

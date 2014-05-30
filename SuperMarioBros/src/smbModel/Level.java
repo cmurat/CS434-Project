@@ -6,6 +6,7 @@ import smbModel.players.Mario;
 
 public class Level {
 	private Map map;
+	private ArrayList<MovingEntity> entities;
 	private ArrayList<Enemy> enemies;
 	private ArrayList<Item> items;
 	Player playerCharacter;
@@ -15,6 +16,11 @@ public class Level {
 		this.enemies = enemies;
 		this.items = items;
 		this.playerCharacter = new Mario(12, 2, this);
+		this.entities = new ArrayList<MovingEntity>();
+		this.entities.add(playerCharacter);
+		this.entities.addAll(enemies);
+		this.entities.addAll(items);
+		
 		
 		setLevelOfEntities(enemies);
 		setLevelOfEntities(items);
@@ -37,6 +43,9 @@ public class Level {
 	public ArrayList<Item> getItems() {
 		return items;
 	}
+	public ArrayList<MovingEntity> getEntities() {
+		return entities;
+	}
 	
 	
 	public String toString() {
@@ -47,7 +56,12 @@ public class Level {
 		return playerCharacter;
 	}
 	
-
+	public void moveEntities() {
+		for (MovingEntity entity : entities) {
+			entity.move();
+			entity.checkCollision();
+		}
+	}
 	public void movePlayerLeft() {
 		playerCharacter.moveLeft();
 	}
@@ -62,6 +76,26 @@ public class Level {
 
 	public void movePlayerDown() {
 		playerCharacter.moveDown();
+	}
+
+	public void stopPlayerLeft() {
+		
+		
+	}
+
+	public void stopPlayerUp() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void stopPlayerRight() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void stopPlayerDown() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

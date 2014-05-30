@@ -30,13 +30,30 @@ public class GameController {
 		}
 
 	}
+	
+	public void playerHasReleasedButton(KeyEvent event) {
+		if (event.getKeyCode() == KeyEvent.VK_LEFT) {
+			game.stopPlayerLeft();
+		} else if (event.getKeyCode() == KeyEvent.VK_UP) {
+			game.stopPlayerUp();
+		} else if (event.getKeyCode() == KeyEvent.VK_RIGHT) {
+			game.stopPlayerRight();
+		} else if (event.getKeyCode() == KeyEvent.VK_DOWN) {
+			game.stopPlayerDown();
+		}
+
+	}
+	
+	
 
 	public Level getLevel() {
 		return level;
 	}
 
 	public void refresh() {
+		game.refresh();
 		gameScreen.refresh();
+		
 	}
 
 }
