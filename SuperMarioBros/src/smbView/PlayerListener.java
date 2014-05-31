@@ -16,4 +16,8 @@ public class PlayerListener extends KeyAdapter {
 	public void keyPressed(KeyEvent event) {
 		controller.playerHasPressedButton(event);
 	}
+	
+	public void keyReleased(KeyEvent event) {
+		controller.playerHasReleasedButton(event);
+	}
 }

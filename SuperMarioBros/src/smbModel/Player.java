@@ -1,11 +1,15 @@
 package smbModel;
 
+import smbModel.commands.collisionCommands.CollidePlayerCommand;
 import smbModel.players.PlayerState;
 import smbModel.players.states.Original;
 
 
 public class Player extends MovingEntity {
     PlayerState state;
+    private static CollidePlayerCommand command = new CollidePlayerCommand();
+   
+    
 	public Player(int px, int py, Level level) {
 		super(px, py, level, null);
 		setState(new Original(this));
@@ -17,28 +21,9 @@ public class Player extends MovingEntity {
 	}
 
 	@Override
-	public void collide(MovingEntity movingEntity) {
-		movingEntity.collideWithPlayer();
-		
+	public Command collide() {
+		command.setSender(this);
+		return command;
 	}
-
-	@Override
-	public void collideWithPlayer() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void collideWithEnemy() {
-		state.previousState();
-		
-	}
-
-	@Override
-	public void collideWithTile() {
-		// TODO Auto-generated method stub
-		
-	}
-
 	
 }

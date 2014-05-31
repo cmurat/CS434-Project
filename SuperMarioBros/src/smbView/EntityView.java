@@ -16,7 +16,9 @@ public class EntityView extends JLabel{
 	}
 	
 	public void setImage(String imagePath) {
-		setIcon(new ImageIcon(imagePath));
+		ImageIcon img = new ImageIcon(imagePath); 
+		setIcon(img);
+		entity.setSize(img.getIconWidth(), img.getIconHeight());
 	}	
 	
 	public void refresh() {

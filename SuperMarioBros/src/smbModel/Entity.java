@@ -4,7 +4,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
 
-public class Entity {
+public abstract class Entity {
 	protected String imagePath; 
 	
 	public static final int BASE_SIZE = 32;
@@ -21,7 +21,6 @@ public class Entity {
 	
 	public String getImagePath() {
 		return imagePath;
-		
 	}
 
 	public void changeX(double px) {
@@ -61,4 +60,14 @@ public class Entity {
 	public boolean intersects(Rectangle r) {
 		return bounds.intersects(r);
 	}
+	
+	public Rectangle getBounds() {
+		return bounds;
+	}
+	
+	public void setSize(int width, int height) {
+		bounds.setSize(width, height);
+	}
+	
+	public abstract Command collide();
 }

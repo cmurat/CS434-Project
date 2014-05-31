@@ -1,7 +1,7 @@
 package smbModel;
 
 import smbController.GameController;
-import smbModel.players.Mario;
+import smbModel.commands.movementCommands.MovementCommand;
 
 public class Game {
 
@@ -17,46 +17,14 @@ public class Game {
 	public Level getLevel() {
 		return level;
 	}
-
-	public void movePlayerLeft() {
-		level.movePlayerLeft();
-	}
-
-	public void movePlayerRight() {
-		level.movePlayerRight();
-	}
-
-	public void movePlayerUp() {
-		level.movePlayerUp();
-	}
-
-	public void movePlayerDown() {
-		level.movePlayerDown();
-	}
 	
 	public void refresh(){
 		level.moveEntities();
 		
 	}
-
-	public void stopPlayerLeft() {
-		level.stopPlayerLeft();
-		
-	}
-
-	public void stopPlayerUp() {
-		level.stopPlayerUp();
-		
-	}
-
-	public void stopPlayerRight() {
-		level.stopPlayerRight();
-		
-	}
-
-	public void stopPlayerDown() {
-		level.stopPlayerDown();
-		
+	
+	public void movePlayer(MovementCommand command) {
+		level.movePlayer(command);
 	}
 
 }

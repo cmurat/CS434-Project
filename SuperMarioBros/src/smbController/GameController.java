@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import smbModel.Game;
 import smbModel.Level;
+import smbModel.commands.movementCommands.MovementCommand;
 import smbView.GameScreen;
 
 public class GameController {
@@ -19,29 +20,11 @@ public class GameController {
 	}
 
 	public void playerHasPressedButton(KeyEvent event) {
-		if (event.getKeyCode() == KeyEvent.VK_LEFT) {
-			game.movePlayerLeft();
-		} else if (event.getKeyCode() == KeyEvent.VK_UP) {
-			game.movePlayerUp();
-		} else if (event.getKeyCode() == KeyEvent.VK_RIGHT) {
-			game.movePlayerRight();
-		} else if (event.getKeyCode() == KeyEvent.VK_DOWN) {
-			game.movePlayerDown();
-		}
-
+		game.movePlayer(new MovementCommand(MovementCommand.START, event));
 	}
 	
 	public void playerHasReleasedButton(KeyEvent event) {
-		if (event.getKeyCode() == KeyEvent.VK_LEFT) {
-			game.stopPlayerLeft();
-		} else if (event.getKeyCode() == KeyEvent.VK_UP) {
-			game.stopPlayerUp();
-		} else if (event.getKeyCode() == KeyEvent.VK_RIGHT) {
-			game.stopPlayerRight();
-		} else if (event.getKeyCode() == KeyEvent.VK_DOWN) {
-			game.stopPlayerDown();
-		}
-
+		game.movePlayer(new MovementCommand(MovementCommand.STOP, event));
 	}
 	
 	

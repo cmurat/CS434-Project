@@ -12,5 +12,7 @@ public class Brick extends Tile{
 		super(row, column, IMAGE_PATH);
 		// TODO Auto-generated constructor stub
 	}
-
+	public String toString() {
+		return "b";
+	}
 }

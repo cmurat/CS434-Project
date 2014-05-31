@@ -1,5 +1,12 @@
 package smbModel;
 
 public abstract class Command {
-	public abstract void execute(Entity entity);
+	protected Entity sender;
+	
+
+	public void setSender(Entity sender) {
+		this.sender = sender;
+	}
+	
+	public abstract void execute(MovingEntity entity);
 }

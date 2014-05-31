@@ -13,4 +13,8 @@ public class Floor extends Tile{
 		// TODO Auto-generated constructor stub
 	}
 
+	public String toString() {
+		return "f";
+	}
+	
 }
