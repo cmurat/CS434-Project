@@ -22,4 +22,15 @@ public class Grown extends PlayerState{
 		
 	}
 
+	@Override
+	public void goLeft() {
+		
+	}
+
+	@Override
+	public void goRight() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

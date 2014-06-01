@@ -19,8 +19,8 @@ public class Game {
 	}
 	
 	public void refresh(){
-		level.moveEntities();
-		
+		level.removeEntities();
+		level.moveEntities();	
 	}
 	
 	public void movePlayer(MovementCommand command) {

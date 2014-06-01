@@ -17,4 +17,13 @@ public abstract class PlayerState {
 		return imagePath;
 	}
 	
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
+	
+	public abstract void goLeft();
+	public abstract void goRight();
+	
+	
+	
 }

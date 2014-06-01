@@ -25,5 +25,21 @@ public class Player extends MovingEntity {
 		command.setSender(this);
 		return command;
 	}
+
+	public void goLeft() {
+		super.goLeft();
+		state.goLeft();
+		this.imagePath = state.getImagePath();
+	}
+
+	public void goRight() {
+		super.goRight();
+		state.goRight();
+		this.imagePath = state.getImagePath();
+	}
+
+	@Override
+	public void removeFromView() {
+	}
 	
 }

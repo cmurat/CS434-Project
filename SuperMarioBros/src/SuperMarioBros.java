@@ -1,6 +1,12 @@
 import java.io.IOException;
 
 import smbController.GameController;
+import smbModel.Command;
+import smbModel.Entity;
+import smbModel.Level;
+import smbModel.MovingEntity;
+import smbModel.Player;
+import smbModel.players.Mario;
 import smbView.GameScreen;
 
 
@@ -16,6 +22,7 @@ public class SuperMarioBros {
 		while(true){
 			controller.refresh();
 			Thread.sleep(5);
+			
 		}
 	}
 

@@ -22,5 +22,10 @@ public class Enemy extends MovingEntity {
 		return command;
 	}
 
+	@Override
+	public void removeFromView() {
+		level.addEntitiesToDelete(this);
+	}
+
 
 }

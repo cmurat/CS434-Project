@@ -3,7 +3,6 @@ package smbModel;
 import smbModel.commands.collisionCommands.CollideTileCommand;
 
 
-
 public class Tile extends Entity{
 	
 	private static CollideTileCommand command = new CollideTileCommand();
@@ -15,5 +14,11 @@ public class Tile extends Entity{
 	public Command collide() {
 		command.setSender(this);
 		return command;
+	}
+
+	@Override
+	public void removeFromView() {
+		// TODO Auto-generated method stub
+		
 	}
 }

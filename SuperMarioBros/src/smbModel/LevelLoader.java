@@ -15,9 +15,10 @@ import smbModel.tiles.Floor;
 
 public class LevelLoader {
 	
-	
+
 	public static void main(String[] args){
 		System.out.println(new LevelLoader().loadLevel());
+		
 	}
 	
 	public Level loadLevel() {
@@ -68,9 +69,6 @@ public class LevelLoader {
 	private Tile getTile(char tileChar, int column, int row) {
 		Tile tile = null;
 		switch(tileChar) {
-		case 'w':
-			System.out.println("w");
-			break;
 		case 'c':
 			tile = new CoinBox(row, column);
 			break;
@@ -112,6 +110,7 @@ public class LevelLoader {
 		Enemy enemy = null;
 		switch(tileChar) {
 		case 'w':
+			System.out.println("girdi");
 			enemy = new Shellcreeper(row, column, null);
 			break;
 		case 'y':

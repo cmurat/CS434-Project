@@ -20,5 +20,17 @@ public class Fiery extends PlayerState{
 		player.setState(new Grown(player));
 		
 	}
+
+	@Override
+	public void goLeft() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void goRight() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

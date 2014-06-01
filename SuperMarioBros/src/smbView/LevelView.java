@@ -18,6 +18,7 @@ public class LevelView extends JPanel {
 	Level level;
 	Map map;
 	ArrayList<EntityView> entityViews;
+	ArrayList<EntityView> entityViewsToDelete;
 	ArrayList<JLabel> tileViews;
 	EntityView playerView;
 
@@ -25,13 +26,14 @@ public class LevelView extends JPanel {
 		this.level = level;
 		this.map = level.getMap();
 		this.entityViews = new ArrayList<EntityView>();
+		this.entityViewsToDelete = new ArrayList<EntityView>();
 		this.tileViews = new ArrayList<JLabel>();
 		System.out.println(level.getPlayer().getImagePath());
 		this.playerView = new EntityView(level.getPlayer());
-		
-		setLayout(null);	
+
+		setLayout(null);
 	}
-	
+
 	public void printLevel() {
 		createTileViews();
 		createEntityViews();
@@ -61,10 +63,11 @@ public class LevelView extends JPanel {
 			entityViews.add(new EntityView(enemy));
 		}
 	}
-	
-	private void addPlayerView(){
+
+	private void addPlayerView() {
 		entityViews.add(playerView);
 	}
+
 	private void addLabels(List<? extends JLabel> labels) {
 		for (JLabel label : labels) {
 			add(label);
@@ -74,15 +77,32 @@ public class LevelView extends JPanel {
 	public void refresh() {
 		refreshEntites();
 		refreshPlayer();
+
 	}
-	
+
 	private void refreshPlayer() {
-		//TODO player ekle
+		// TODO player ekle
 	}
-	
+
 	private void refreshEntites() {
+		ArrayList<Entity> entities = level.getEntitiesToDelete();
+
 		for (EntityView entityView : entityViews) {
-			entityView.refresh();
+			if (entities.contains(entityView.entity)) {
+				entityViewsToDelete.add(entityView);
+				entityView.entity = null;
+			}
 		}
+
+		for (EntityView entityView : entityViews) {
+			if (entityView.entity == null) {
+				remove(entityView);
+				repaint();
+			} else {
+				entityView.refresh();
+			}
+
+		}
+		entityViews.removeAll(entityViewsToDelete);
 	}
 }

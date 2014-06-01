@@ -16,4 +16,10 @@ public class Item extends MovingEntity {
 		command.setSender(this);
 		return command;
 	}
+
+	@Override
+	public void removeFromView() {
+		// TODO Auto-generated method stub
+		
+	}
 }

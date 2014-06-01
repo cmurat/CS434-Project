@@ -5,11 +5,20 @@ import java.util.ArrayList;
 import smbModel.tiles.BlankTile;
 
 public abstract class MovingEntity extends Entity {
+	public static final double ACCELERATION = 0.02;
+	public static final double MAX_SPEED = 0.02;
+	
+	public static final int UP = 1;
+	public static final int DOWN = 2;
+	public static final int RIGHT = 3;
+	public static final int LEFT = 4;
+	
 	private double speed;
-	private Level level;
+	protected Level level;
 	protected double horizontalSpeed;
 	protected double verticalSpeed;
-	int count = 0;
+	protected double horizontalAcceleration;
+	protected double verticalAcceleration;
 
 	public MovingEntity(int row, int column, Level level, String imagePath) {
 		super(row, column, imagePath);
@@ -18,9 +27,9 @@ public abstract class MovingEntity extends Entity {
 
 	public void checkCollision() {
 		ArrayList<MovingEntity> entities = level.getEntities();
-		for (Entity movingEntity : entities) {
+		for (MovingEntity movingEntity : entities) {
 			if (movingEntity.intersects(bounds)) {
-				collide().execute(this);
+				movingEntity.collide().execute(this);
 			}
 		}
 
@@ -35,35 +44,71 @@ public abstract class MovingEntity extends Entity {
 
 	public void move() {
 		checkCollision();
+		normalizeHorizontalSpeed();
+		normalizeVerticalSpeed();
 		changeX(horizontalSpeed);
 		changeY(verticalSpeed);
 	}
+	
+	public void normalizeVerticalSpeed() {
+		if (verticalSpeed >= -MAX_SPEED && verticalSpeed <= MAX_SPEED)
+			verticalSpeed += verticalAcceleration;
+		else
+			verticalAcceleration = 0;
+		
 
+		if (verticalSpeed < 0 ){
+			verticalSpeed = 0;
+		}
+			
+		if (verticalSpeed > MAX_SPEED) {
+			verticalSpeed = MAX_SPEED;
+		}
+	}
+
+	public void normalizeHorizontalSpeed() {
+		System.out.println(horizontalAcceleration);
+		System.out.println(horizontalSpeed);
+		if (horizontalSpeed >= 0 && horizontalSpeed <= MAX_SPEED)
+			horizontalSpeed += horizontalAcceleration;
+		else
+			horizontalAcceleration = 0;
+		
+
+		if (horizontalSpeed < 0){
+			horizontalSpeed = 0;
+		}
+			
+		if (horizontalSpeed > MAX_SPEED) {
+			horizontalSpeed = MAX_SPEED;
+		}
+	}
+	
 	public void goUp() {
-		verticalSpeed = -speed;
+		verticalAcceleration = -ACCELERATION;
 	}
 
 	public void goDown() {
-		verticalSpeed = speed;
+		verticalAcceleration = ACCELERATION;
 	}
 
 	public void goLeft() {
-		horizontalSpeed = -speed;
+		horizontalAcceleration = -ACCELERATION;
 	}
 
 	public void goRight() {
-		horizontalSpeed = speed;
+		horizontalAcceleration = ACCELERATION;
 	}
 
 	public void stopLeft() {
-		if (horizontalSpeed < 0) {
-			horizontalSpeed = 0;
+		if (horizontalAcceleration < 0) {
+			goRight();
 		}
 	}
 
 	public void stopRight() {
-		if (horizontalSpeed > 0) {
-			horizontalSpeed = 0;
+		if (horizontalAcceleration > 0) {
+			goLeft();
 		}
 	}
 

@@ -6,12 +6,14 @@ import java.util.Collection;
 
 import smbModel.commands.movementCommands.MovementCommand;
 import smbModel.players.Mario;
+import smbModel.tiles.BlankTile;
 
 public class Level {
 	private Map map;
 	private ArrayList<MovingEntity> entities;
 	private ArrayList<Enemy> enemies;
 	private ArrayList<Item> items;
+	private ArrayList<Entity> entitiesToDelete;
 	Player playerCharacter;
 
 	public Level(Map map, ArrayList<Enemy> enemies, ArrayList<Item> items) {
@@ -20,6 +22,7 @@ public class Level {
 		this.items = items;
 		this.playerCharacter = new Mario(12, 2, this);
 		this.entities = new ArrayList<MovingEntity>();
+		this.entitiesToDelete = new ArrayList<Entity>();
 		this.entities.add(playerCharacter);
 		this.entities.addAll(enemies);
 		this.entities.addAll(items);
@@ -43,6 +46,10 @@ public class Level {
 		return enemies;
 	}
 
+	public ArrayList<Entity> getEntitiesToDelete() {
+		return entitiesToDelete;
+	}
+	
 	public ArrayList<Item> getItems() {
 		return items;
 	}
@@ -81,5 +88,16 @@ public class Level {
 
 		return respectiveTiles;
 	}
+
+	public void addEntitiesToDelete(Entity entity) {
+		entitiesToDelete.add(entity);	
+		entity = null;
+	}
+	
+	public void removeEntities() {
+		entities.removeAll(entitiesToDelete);
+		enemies.removeAll(entitiesToDelete);
+	}
+
 
 }

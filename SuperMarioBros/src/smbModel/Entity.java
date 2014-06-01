@@ -69,5 +69,7 @@ public abstract class Entity {
 		bounds.setSize(width, height);
 	}
 	
+	public abstract void removeFromView();
+	
 	public abstract Command collide();
 }
