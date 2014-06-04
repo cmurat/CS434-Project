@@ -21,7 +21,7 @@ public class SuperMarioBros {
 		GameController controller = new GameController();
 		while(true){
 			controller.refresh();
-			Thread.sleep(5);
+			Thread.sleep(20);
 			
 		}
 	}

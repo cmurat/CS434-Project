@@ -24,14 +24,12 @@ public class Original extends PlayerState{
 
 	@Override
 	public void goLeft() {
-		System.out.println("left");
 		super.setImagePath("Assets/marioIdleLeft.png");
 		
 	}
 
 	@Override
 	public void goRight() {
-		System.out.println("right");
 		super.setImagePath("Assets/marioIdleRight.png");
 		
 	}

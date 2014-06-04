@@ -1,24 +1,26 @@
 package smbModel;
 
+import java.awt.Point;
 import java.util.ArrayList;
 
-import smbModel.tiles.BlankTile;
-
 public abstract class MovingEntity extends Entity {
-	public static final double ACCELERATION = 0.02;
-	public static final double MAX_SPEED = 0.02;
-	
-	public static final int UP = 1;
-	public static final int DOWN = 2;
-	public static final int RIGHT = 3;
-	public static final int LEFT = 4;
-	
+	public static final double ACCELERATION = 0.24;
+	public static final double MAX_SPEED = 8;
+
 	private double speed;
 	protected Level level;
 	protected double horizontalSpeed;
 	protected double verticalSpeed;
 	protected double horizontalAcceleration;
 	protected double verticalAcceleration;
+
+	protected boolean canGoDown = false;
+	protected boolean jumping = false;
+	protected boolean idle = true;
+	protected boolean pressedUp = false;
+	
+	protected int count = 0;
+	protected Point prevLocation = new Point(0, 0); 
 
 	public MovingEntity(int row, int column, Level level, String imagePath) {
 		super(row, column, imagePath);
@@ -49,43 +51,50 @@ public abstract class MovingEntity extends Entity {
 		changeX(horizontalSpeed);
 		changeY(verticalSpeed);
 	}
-	
-	public void normalizeVerticalSpeed() {
-		if (verticalSpeed >= -MAX_SPEED && verticalSpeed <= MAX_SPEED)
-			verticalSpeed += verticalAcceleration;
-		else
-			verticalAcceleration = 0;
-		
 
-		if (verticalSpeed < 0 ){
+	public void normalizeVerticalSpeed() {
+		if(pressedUp) {
+			System.out.println("pressedup");
+			verticalSpeed = -MAX_SPEED;
+			pressedUp = false;
+		}
+		
+		if(canGoDown) {
+			verticalSpeed += ACCELERATION;
+		} else if(verticalSpeed > 0) {
 			verticalSpeed = 0;
 		}
-			
-		if (verticalSpeed > MAX_SPEED) {
+		
+		if(verticalSpeed > MAX_SPEED) {
 			verticalSpeed = MAX_SPEED;
+		} 
+		
+		if(verticalSpeed < -MAX_SPEED) {
+			verticalSpeed = -MAX_SPEED;
 		}
+		
 	}
 
 	public void normalizeHorizontalSpeed() {
-		System.out.println(horizontalAcceleration);
-		System.out.println(horizontalSpeed);
-		if (horizontalSpeed >= 0 && horizontalSpeed <= MAX_SPEED)
+		if (horizontalSpeed >= -MAX_SPEED && horizontalSpeed <= MAX_SPEED) {
 			horizontalSpeed += horizontalAcceleration;
-		else
-			horizontalAcceleration = 0;
+		} else if (horizontalSpeed > 0) {
+			horizontalSpeed = MAX_SPEED;
+		} else {
+			horizontalSpeed = -MAX_SPEED;
+		}
 		
 
-		if (horizontalSpeed < 0){
+		if(idle && (horizontalSpeed < ACCELERATION && horizontalSpeed > -ACCELERATION)) {
 			horizontalSpeed = 0;
-		}
-			
-		if (horizontalSpeed > MAX_SPEED) {
-			horizontalSpeed = MAX_SPEED;
+			horizontalAcceleration = 0;
 		}
 	}
-	
+
 	public void goUp() {
 		verticalAcceleration = -ACCELERATION;
+		pressedUp = true;
+		canGoDown = true;
 	}
 
 	public void goDown() {
@@ -94,36 +103,75 @@ public abstract class MovingEntity extends Entity {
 
 	public void goLeft() {
 		horizontalAcceleration = -ACCELERATION;
+		idle = false;
 	}
 
 	public void goRight() {
 		horizontalAcceleration = ACCELERATION;
+		idle = false;
 	}
 
-	public void stopLeft() {
+	public void decelerateLeft() {
 		if (horizontalAcceleration < 0) {
-			goRight();
+			horizontalAcceleration = ACCELERATION;
+			idle = true;
+		}
+	}
+
+	public void decelerateRight() {
+		if (horizontalAcceleration > 0) {
+			horizontalAcceleration = -ACCELERATION;
+			idle = true;
+		}
+	}
+
+	public void decelerateUp() {
+		if (verticalSpeed < 0) {
+			verticalAcceleration = ACCELERATION;
+			idle = true;
+		}
+	}
+
+	public void decelerateDown() {
+		if (verticalSpeed > 0) {
+			verticalAcceleration = -ACCELERATION;
+			idle = true;
+			jumping = false;
 		}
 	}
 
 	public void stopRight() {
-		if (horizontalAcceleration > 0) {
-			goLeft();
+		if (horizontalSpeed > 0) {
+			horizontalSpeed = 0;
+			horizontalAcceleration = 0;
+			idle = true;
 		}
 	}
-
+	
+	public void stopLeft() {
+		if (horizontalSpeed < 0) {
+			horizontalSpeed = 0;
+			horizontalAcceleration = 0;
+			idle = true;
+		}
+	}
+	
 	public void stopUp() {
 		if (verticalSpeed < 0) {
 			verticalSpeed = 0;
+			verticalAcceleration = 0;
+			idle = true;
 		}
 	}
-
+	
 	public void stopDown() {
 		if (verticalSpeed > 0) {
 			verticalSpeed = 0;
+			verticalAcceleration = 0;
+			idle = true;
 		}
 	}
-
+	
 	public double getSpeed() {
 		return speed;
 	}
@@ -149,5 +197,12 @@ public abstract class MovingEntity extends Entity {
 				+ "\n";
 		return str;
 	}
-
+	
+	public void setCanGoDown(boolean cannotGoDown) {
+		this.canGoDown = cannotGoDown;
+	}
+	
+	public boolean getCanGoDown() {
+		return canGoDown;
+	}
 }

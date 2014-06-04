@@ -92,13 +92,13 @@ public class LevelLoader {
 		for (int row = 0; row < charMap.length; row++) {
 			for (int column = 0; column < charMap[0].length; column++) {
 				Enemy enemy = getEnemy(charMap[row][column], column, row);
-				Item item = getItem(charMap[row][column], column, row);
+//				Item item = getItem(charMap[row][column], column, row);
 				if(enemy != null) {
 					enemies.add(enemy);
 				}
-				if(item != null) {
-					items.add(item);
-				}
+//				if(item != null) {
+//					items.add(item);
+//				}
 			}
 		}
 		
