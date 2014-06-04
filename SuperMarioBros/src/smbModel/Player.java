@@ -24,6 +24,10 @@ public class Player extends MovingEntity {
 		this.state = state;
 		this.imagePath = state.getImagePath();
 	}
+	
+	public PlayerState getState(){
+		return state;
+	}
 
 	@Override
 	public Command collide() {

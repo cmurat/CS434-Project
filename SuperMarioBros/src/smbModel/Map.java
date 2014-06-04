@@ -20,9 +20,9 @@ public class Map {
 	}
 
 	public Tile[][] getRespectiveTiles(Point location) {
-		Tile[][] respectiveTiles = new Tile[3][3];
-		int x = (int) (location.getX()/Tile.BASE_SIZE);
-		int y = (int) (location.getY()/Tile.BASE_SIZE);
+		Tile[][] respectiveTiles = new Tile[5][5];
+		int x = (int) (location.getX()/Tile.BASE_SIZE) - 1;
+		int y = (int) (location.getY()/Tile.BASE_SIZE) - 1;
 		
 		for (int i = 0; i < respectiveTiles.length; i++) {
 			for (int j = 0; j < respectiveTiles[0].length; j++) {

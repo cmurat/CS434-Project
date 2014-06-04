@@ -7,6 +7,6 @@ public abstract class Command {
 	public void setSender(Entity sender) {
 		this.sender = sender;
 	}
-	
 	public abstract void execute(MovingEntity entity);
+
 }

@@ -10,6 +10,7 @@ import javax.swing.text.PlainView;
 
 import smbModel.Enemy;
 import smbModel.Entity;
+import smbModel.Item;
 import smbModel.Level;
 import smbModel.Map;
 import smbModel.Tile;
@@ -61,6 +62,10 @@ public class LevelView extends JPanel {
 		ArrayList<Enemy> enemies = level.getEnemies();
 		for (Enemy enemy : enemies) {
 			entityViews.add(new EntityView(enemy));
+		}
+		ArrayList<Item> items = level.getItems();
+		for (Item item : items) {
+			entityViews.add(new EntityView(item));
 		}
 	}
 

@@ -1,7 +1,15 @@
 package smbModel;
 
+import java.awt.List;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.util.ArrayList;
+
+import javax.swing.border.EmptyBorder;
+
+import smbModel.tiles.BlankTile;
+import smbModel.tiles.Brick;
+import smbModel.tiles.Floor;
 
 public abstract class MovingEntity extends Entity {
 	public static final double ACCELERATION = 0.24;
@@ -18,9 +26,9 @@ public abstract class MovingEntity extends Entity {
 	protected boolean jumping = false;
 	protected boolean idle = true;
 	protected boolean pressedUp = false;
-	
+
 	protected int count = 0;
-	protected Point prevLocation = new Point(0, 0); 
+	protected Point prevLocation = new Point(0, 0);
 
 	public MovingEntity(int row, int column, Level level, String imagePath) {
 		super(row, column, imagePath);
@@ -30,7 +38,8 @@ public abstract class MovingEntity extends Entity {
 	public void checkCollision() {
 		ArrayList<MovingEntity> entities = level.getEntities();
 		for (MovingEntity movingEntity : entities) {
-			if (movingEntity.intersects(bounds)) {
+			if (movingEntity.intersects(bounds)
+					&& movingEntity.bounds != bounds) {
 				movingEntity.collide().execute(this);
 			}
 		}
@@ -46,33 +55,50 @@ public abstract class MovingEntity extends Entity {
 
 	public void move() {
 		checkCollision();
+		checkDown();
 		normalizeHorizontalSpeed();
 		normalizeVerticalSpeed();
 		changeX(horizontalSpeed);
 		changeY(verticalSpeed);
 	}
 
+	private void checkDown() {
+		Rectangle stepDownRectangle = new Rectangle(bounds.x, bounds.y
+				+ bounds.height, bounds.width, (int) MAX_SPEED / 2);
+		ArrayList<Tile> tiles = level.getRespectiveTiles(stepDownRectangle
+				.getLocation());
+		boolean intersects = false;
+		for (Tile tile : tiles) {
+			intersects = intersects || tile.intersects(stepDownRectangle);
+		}
+		canGoDown = !intersects;
+		if (!canGoDown) {
+			jumping = false;
+		}
+
+	}
+
 	public void normalizeVerticalSpeed() {
-		if(pressedUp) {
+		if (pressedUp) {
 			System.out.println("pressedup");
 			verticalSpeed = -MAX_SPEED;
 			pressedUp = false;
 		}
-		
-		if(canGoDown) {
+
+		if (canGoDown) {
 			verticalSpeed += ACCELERATION;
-		} else if(verticalSpeed > 0) {
+		} else if (verticalSpeed > 0) {
 			verticalSpeed = 0;
 		}
-		
-		if(verticalSpeed > MAX_SPEED) {
+
+		if (verticalSpeed > MAX_SPEED) {
 			verticalSpeed = MAX_SPEED;
-		} 
-		
-		if(verticalSpeed < -MAX_SPEED) {
+		}
+
+		if (verticalSpeed < -MAX_SPEED) {
 			verticalSpeed = -MAX_SPEED;
 		}
-		
+
 	}
 
 	public void normalizeHorizontalSpeed() {
@@ -83,9 +109,9 @@ public abstract class MovingEntity extends Entity {
 		} else {
 			horizontalSpeed = -MAX_SPEED;
 		}
-		
 
-		if(idle && (horizontalSpeed < ACCELERATION && horizontalSpeed > -ACCELERATION)) {
+		if (idle
+				&& (horizontalSpeed < ACCELERATION && horizontalSpeed > -ACCELERATION)) {
 			horizontalSpeed = 0;
 			horizontalAcceleration = 0;
 		}
@@ -147,7 +173,7 @@ public abstract class MovingEntity extends Entity {
 			idle = true;
 		}
 	}
-	
+
 	public void stopLeft() {
 		if (horizontalSpeed < 0) {
 			horizontalSpeed = 0;
@@ -155,7 +181,7 @@ public abstract class MovingEntity extends Entity {
 			idle = true;
 		}
 	}
-	
+
 	public void stopUp() {
 		if (verticalSpeed < 0) {
 			verticalSpeed = 0;
@@ -163,15 +189,16 @@ public abstract class MovingEntity extends Entity {
 			idle = true;
 		}
 	}
-	
+
 	public void stopDown() {
 		if (verticalSpeed > 0) {
 			verticalSpeed = 0;
 			verticalAcceleration = 0;
 			idle = true;
+			jumping = false;
 		}
 	}
-	
+
 	public double getSpeed() {
 		return speed;
 	}
@@ -197,11 +224,11 @@ public abstract class MovingEntity extends Entity {
 				+ "\n";
 		return str;
 	}
-	
+
 	public void setCanGoDown(boolean cannotGoDown) {
 		this.canGoDown = cannotGoDown;
 	}
-	
+
 	public boolean getCanGoDown() {
 		return canGoDown;
 	}

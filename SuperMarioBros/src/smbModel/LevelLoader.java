@@ -8,6 +8,8 @@ import java.util.Scanner;
 import smbModel.enemies.Shellcreeper;
 import smbModel.enemies.Sidestepper;
 import smbModel.items.Coin;
+import smbModel.items.Mushroom;
+import smbModel.items.mushrooms.RedMushroom;
 import smbModel.tiles.BlankTile;
 import smbModel.tiles.Brick;
 import smbModel.tiles.CoinBox;
@@ -15,11 +17,11 @@ import smbModel.tiles.Floor;
 
 public class LevelLoader {
 	
-
-	public static void main(String[] args){
-		System.out.println(new LevelLoader().loadLevel());
-		
-	}
+//
+//	public static void main(String[] args){
+//		System.out.println(new LevelLoader().loadLevel());
+//		
+//	}
 	
 	public Level loadLevel() {
 		Map map = createMap();
@@ -92,13 +94,13 @@ public class LevelLoader {
 		for (int row = 0; row < charMap.length; row++) {
 			for (int column = 0; column < charMap[0].length; column++) {
 				Enemy enemy = getEnemy(charMap[row][column], column, row);
-//				Item item = getItem(charMap[row][column], column, row);
+				Item item = getItem(charMap[row][column], column, row);
 				if(enemy != null) {
 					enemies.add(enemy);
 				}
-//				if(item != null) {
-//					items.add(item);
-//				}
+				if(item != null) {
+					items.add(item);
+				}
 			}
 		}
 		
@@ -123,8 +125,9 @@ public class LevelLoader {
 	private Item getItem(char tileChar, int column, int row) {
 		Item item = null;
 		switch(tileChar) {
-		case 'c':
-			item = new Coin(row, column, null);
+		case 'r':
+			System.out.println("girddiii");
+			item = new RedMushroom(row, column, null);
 			break;
 		}
 		return item;

@@ -1,5 +1,7 @@
 package smbModel.tiles;
 
+import java.awt.Rectangle;
+
 import smbModel.Command;
 import smbModel.Tile;
 import smbModel.commands.collisionCommands.EmptyCollisionCommand;
@@ -19,5 +21,9 @@ public class BlankTile extends Tile{
 
 	public String toString() {
 		return "n";
+	}
+	
+	public boolean intersects(Rectangle r){
+		return false;
 	}
 }

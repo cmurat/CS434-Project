@@ -14,6 +14,7 @@ public class Level {
 	private ArrayList<Enemy> enemies;
 	private ArrayList<Item> items;
 	private ArrayList<Entity> entitiesToDelete;
+	
 	Player playerCharacter;
 
 	public Level(Map map, ArrayList<Enemy> enemies, ArrayList<Item> items) {
