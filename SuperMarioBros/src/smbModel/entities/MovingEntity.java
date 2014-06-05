@@ -20,10 +20,11 @@ public abstract class MovingEntity extends Entity {
 	protected boolean canGoDown = false;
 	protected boolean jumping = false;
 	protected boolean idle = true;
-	protected boolean pressedUp = false;
-	
+
 	protected boolean continueHorizontally = false;
 	protected boolean horizontallyCollidedWithTile = false;
+
+	public HorizontalDirection horizontalDirection;
 
 	protected int count = 0;
 	protected Point prevLocation = new Point(0, 0);
@@ -31,8 +32,9 @@ public abstract class MovingEntity extends Entity {
 	public MovingEntity(int row, int column, Level level, String imagePath) {
 		super(row, column, imagePath);
 		setLevel(level);
+		horizontalDirection = HorizontalDirection.Idle;
 	}
-	
+
 	public void move() {
 		checkCollision();
 		checkDown();
@@ -100,7 +102,8 @@ public abstract class MovingEntity extends Entity {
 			horizontalSpeed = -MAX_SPEED;
 		}
 
-		if (!continueHorizontally && idle
+		if (!continueHorizontally
+				&& horizontalDirection == HorizontalDirection.Idle
 				&& (horizontalSpeed < ACCELERATION && horizontalSpeed > -ACCELERATION)) {
 			horizontalSpeed = 0;
 			horizontalAcceleration = 0;
@@ -117,52 +120,52 @@ public abstract class MovingEntity extends Entity {
 
 	public void goLeft() {
 		horizontalAcceleration = -ACCELERATION;
-		idle = false;
+		horizontalDirection = HorizontalDirection.Left;
 	}
 
 	public void goRight() {
 		horizontalAcceleration = ACCELERATION;
-		idle = false;
+		horizontalDirection = HorizontalDirection.Right;
 	}
-	
-	public void decelerateHorizontally(){
-		if(Math.abs(horizontalSpeed + horizontalAcceleration) > Math.abs(horizontalSpeed)) {
+
+	public void decelerateHorizontally() {
+		if (Math.abs(horizontalSpeed + horizontalAcceleration) > Math
+				.abs(horizontalSpeed)) {
 			horizontalAcceleration *= -1;
 		}
-		idle = true;
+		horizontalDirection = HorizontalDirection.Idle;
 	}
 
 	public void decelerateVertically() {
-		if(Math.abs(verticalSpeed + verticalAcceleration) > Math.abs(verticalSpeed)) {
+		if (Math.abs(verticalSpeed + verticalAcceleration) > Math
+				.abs(verticalSpeed)) {
 			verticalAcceleration *= -1;
 		}
-		
-		if(verticalAcceleration < 0) {
+
+		if (verticalAcceleration < 0) {
 			jumping = false;
 		}
-		idle = true;
 	}
-	
+
 	public void stopHorizontally() {
 		horizontalSpeed = 0;
 		horizontalAcceleration = 0;
-		idle = true;
 		horizontallyCollidedWithTile = true;
+		horizontalDirection = HorizontalDirection.Idle;
 	}
-	
+
 	public void stopVertically() {
-		if(verticalSpeed > 0) {
+		if (verticalSpeed > 0) {
 			jumping = false;
 		}
 		verticalSpeed = 0;
 		verticalAcceleration = 0;
-		idle = true;
 	}
 
 	public void setLevel(Level level) {
 		this.level = level;
 	}
-	
+
 	public double getX() {
 		return super.getX();
 	}
@@ -195,9 +198,5 @@ public abstract class MovingEntity extends Entity {
 
 	public boolean isIdle() {
 		return idle;
-	}
-
-	public void setIdle(boolean idle) {
-		this.idle = idle;
 	}
 }
