@@ -49,7 +49,6 @@ public class Player extends MovingEntity {
 	
 	public void goUp() {
 		if(!getCanGoDown() && !jumping) {
-			System.out.println("asdasd");
 			jumping = true;
 			super.goUp();
 		} else {

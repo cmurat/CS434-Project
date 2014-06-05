@@ -23,8 +23,6 @@ public class CollideTileCommand extends Command {
 
 		for (BoundingRectangle boundingRectangle : boundingRectangles) {
 			if (boundingRectangle.intersects(sender.getBounds())) {
-				System.out.println(boundingRectangle.getPosition());
-				System.out.println(sender.getClass() + " " + entity.getClass());
 				if (boundingRectangle.getPosition().equals("left")) {
 					entity.stopLeft();
 					entity.changeX((dx + sender.getBounds().getWidth()));

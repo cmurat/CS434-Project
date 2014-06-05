@@ -28,11 +28,11 @@ public class MovementCommand extends Command {
 
 	private void executeStop(MovingEntity entity) {
 		if (event.getKeyCode() == KeyEvent.VK_LEFT) {
-			entity.decelerateLeft();
+			entity.decelerateHorizontally();
 		} else if (event.getKeyCode() == KeyEvent.VK_UP) {
 			entity.decelerateUp();
 		} else if (event.getKeyCode() == KeyEvent.VK_RIGHT) {
-			entity.decelerateRight();
+			entity.decelerateHorizontally();
 		} else if (event.getKeyCode() == KeyEvent.VK_DOWN) {
 			entity.decelerateDown();
 		}

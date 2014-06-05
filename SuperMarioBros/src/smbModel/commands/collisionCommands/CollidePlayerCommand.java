@@ -1,7 +1,5 @@
 package smbModel.commands.collisionCommands;
 
-import java.lang.management.PlatformManagedObject;
-
 import smbModel.Command;
 import smbModel.MovingEntity;
 import smbModel.Player;

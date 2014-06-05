@@ -136,19 +136,12 @@ public abstract class MovingEntity extends Entity {
 		horizontalAcceleration = ACCELERATION;
 		idle = false;
 	}
-
-	public void decelerateLeft() {
-		if (horizontalAcceleration < 0) {
-			horizontalAcceleration = ACCELERATION;
-			idle = true;
+	
+	public void decelerateHorizontally(){
+		if(Math.abs(horizontalSpeed + horizontalAcceleration) > Math.abs(horizontalSpeed)) {
+			horizontalAcceleration *= -1;
 		}
-	}
-
-	public void decelerateRight() {
-		if (horizontalAcceleration > 0) {
-			horizontalAcceleration = -ACCELERATION;
-			idle = true;
-		}
+		idle = true;
 	}
 
 	public void decelerateUp() {
