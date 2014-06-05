@@ -51,7 +51,6 @@ public class Player extends MovingEntity {
 		if(!getCanGoDown() && !jumping) {
 			jumping = true;
 			super.goUp();
-		} else {
 		}
 	}
 

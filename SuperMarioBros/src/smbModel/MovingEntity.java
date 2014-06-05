@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import javax.swing.border.EmptyBorder;
 
+import smbModel.commands.collisionCommands.CollideTileCommand;
 import smbModel.tiles.BlankTile;
 import smbModel.tiles.Brick;
 import smbModel.tiles.Floor;
@@ -15,7 +16,6 @@ public abstract class MovingEntity extends Entity {
 	public static final double ACCELERATION = 0.24;
 	public static final double MAX_SPEED = 8;
 
-	private double speed;
 	protected Level level;
 	protected double horizontalSpeed;
 	protected double verticalSpeed;
@@ -26,6 +26,9 @@ public abstract class MovingEntity extends Entity {
 	protected boolean jumping = false;
 	protected boolean idle = true;
 	protected boolean pressedUp = false;
+	
+	protected boolean continueHorizontally = false;
+	protected boolean horizontallyCollidedWithTile = false;
 
 	protected int count = 0;
 	protected Point prevLocation = new Point(0, 0);
@@ -33,6 +36,15 @@ public abstract class MovingEntity extends Entity {
 	public MovingEntity(int row, int column, Level level, String imagePath) {
 		super(row, column, imagePath);
 		setLevel(level);
+	}
+	
+	public void move() {
+		checkCollision();
+		checkDown();
+		normalizeHorizontalSpeed();
+		normalizeVerticalSpeed();
+		changeX(horizontalSpeed);
+		changeY(verticalSpeed);
 	}
 
 	public void checkCollision() {
@@ -53,15 +65,6 @@ public abstract class MovingEntity extends Entity {
 		}
 	}
 
-	public void move() {
-		checkCollision();
-		checkDown();
-		normalizeHorizontalSpeed();
-		normalizeVerticalSpeed();
-		changeX(horizontalSpeed);
-		changeY(verticalSpeed);
-	}
-
 	private void checkDown() {
 		Rectangle stepDownRectangle = new Rectangle(bounds.x, bounds.y
 				+ bounds.height, bounds.width, (int) MAX_SPEED / 2);
@@ -80,7 +83,6 @@ public abstract class MovingEntity extends Entity {
 
 	public void normalizeVerticalSpeed() {
 		if (pressedUp) {
-			System.out.println("pressedup");
 			verticalSpeed = -MAX_SPEED;
 			pressedUp = false;
 		}
@@ -110,7 +112,7 @@ public abstract class MovingEntity extends Entity {
 			horizontalSpeed = -MAX_SPEED;
 		}
 
-		if (idle
+		if (!continueHorizontally && idle
 				&& (horizontalSpeed < ACCELERATION && horizontalSpeed > -ACCELERATION)) {
 			horizontalSpeed = 0;
 			horizontalAcceleration = 0;
@@ -164,6 +166,7 @@ public abstract class MovingEntity extends Entity {
 			horizontalSpeed = 0;
 			horizontalAcceleration = 0;
 			idle = true;
+			horizontallyCollidedWithTile = true;
 		}
 	}
 
@@ -172,6 +175,7 @@ public abstract class MovingEntity extends Entity {
 			horizontalSpeed = 0;
 			horizontalAcceleration = 0;
 			idle = true;
+			horizontallyCollidedWithTile = true;
 		}
 	}
 
@@ -192,18 +196,10 @@ public abstract class MovingEntity extends Entity {
 		}
 	}
 
-	public double getSpeed() {
-		return speed;
-	}
-
 	public void setLevel(Level level) {
 		this.level = level;
 	}
-
-	protected double setSpeed(double speed) {
-		return this.speed = speed;
-	}
-
+	
 	public double getX() {
 		return super.getX();
 	}
@@ -224,5 +220,13 @@ public abstract class MovingEntity extends Entity {
 
 	public boolean getCanGoDown() {
 		return canGoDown;
+	}
+
+	public boolean isHorizontallyCollidedWithTile() {
+		return horizontallyCollidedWithTile;
+	}
+
+	public void setHorizontallyCollidedWithTile(boolean collidedWithTile) {
+		this.horizontallyCollidedWithTile = collidedWithTile;
 	}
 }

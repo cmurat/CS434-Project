@@ -37,6 +37,7 @@ public class CollideTileCommand extends Command {
 					entity.setCanGoDown(false);
 					entity.changeY(dy - entity.getBounds().getHeight());
 				}
+				
 			}
 		}
 
