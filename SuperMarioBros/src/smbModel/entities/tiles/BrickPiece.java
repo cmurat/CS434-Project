@@ -1,7 +1,6 @@
 package smbModel.entities.tiles;
 
 import smbModel.Command;
-import smbModel.commands.collisionCommands.CollideTileCommand;
 import smbModel.commands.collisionCommands.EmptyCollisionCommand;
 import smbModel.entities.MovingEntity;
 

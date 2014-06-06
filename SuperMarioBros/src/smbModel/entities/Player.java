@@ -5,7 +5,6 @@ import smbModel.MusicPlayer;
 import smbModel.commands.collisionCommands.CollidePlayerCommand;
 import smbModel.entities.players.PlayerState;
 import smbModel.entities.players.states.Original;
-import smbModel.level.Level;
 
 
 public class Player extends MovingEntity {

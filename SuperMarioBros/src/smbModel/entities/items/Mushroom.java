@@ -4,7 +4,6 @@ import smbModel.Command;
 import smbModel.commands.collisionCommands.CollideItemCommand;
 import smbModel.entities.Item;
 import smbModel.entities.Tile;
-import smbModel.level.Level;
 
 public class Mushroom extends Item {
 	

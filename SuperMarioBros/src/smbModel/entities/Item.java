@@ -1,9 +1,6 @@
 package smbModel.entities;
 
-import java.util.Random;
-
 import smbModel.Command;
-import smbModel.level.Level;
 
 public abstract class Item extends MovingEntity {
 

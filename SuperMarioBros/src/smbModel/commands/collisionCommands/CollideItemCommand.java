@@ -1,6 +1,5 @@
 package smbModel.commands.collisionCommands;
 
-import smbModel.Command;
 import smbModel.commands.CollideCommand;
 import smbModel.entities.Item;
 import smbModel.entities.MovingEntity;

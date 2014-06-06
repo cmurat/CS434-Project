@@ -3,7 +3,6 @@ package smbModel.entities;
 import smbModel.Command;
 import smbModel.Entity;
 import smbModel.commands.collisionCommands.CollideTileCommand;
-import smbModel.level.Level;
 
 
 public class Tile extends Entity{

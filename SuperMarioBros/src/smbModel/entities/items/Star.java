@@ -3,7 +3,6 @@ package smbModel.entities.items;
 import smbModel.Command;
 import smbModel.commands.collisionCommands.CollideItemCommand;
 import smbModel.entities.Item;
-import smbModel.level.Level;
 
 public class Star extends Item {
 

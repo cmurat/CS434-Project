@@ -5,8 +5,6 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 
 import smbModel.Entity;
-import smbModel.entities.tiles.BrickPiece;
-import smbModel.level.Level;
 
 public abstract class MovingEntity extends Entity {
 	public static final double ACCELERATION = 0.25;

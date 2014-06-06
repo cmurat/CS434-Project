@@ -1,7 +1,6 @@
 package smbModel.entities.items.mushrooms;
 
 import smbModel.entities.items.Mushroom;
-import smbModel.level.Level;
 
 public class GreenMushroom extends Mushroom {
 

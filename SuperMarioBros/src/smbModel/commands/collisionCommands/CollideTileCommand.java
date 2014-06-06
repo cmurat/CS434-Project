@@ -1,16 +1,6 @@
 package smbModel.commands.collisionCommands;
 
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.sound.sampled.ReverbType;
-
-import smbModel.Command;
 import smbModel.commands.CollideCommand;
-import smbModel.commands.collisionCommands.util.BoundingRectangle;
-import smbModel.entities.MovingEntity;
 import smbModel.entities.Player;
 
 public class CollideTileCommand extends CollideCommand {
