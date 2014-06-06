@@ -5,9 +5,9 @@ import smbModel.level.Level;
 
 public class GreenMushroom extends Mushroom {
 
-	public GreenMushroom(int px, int py, Level level) {
+	public GreenMushroom(int px, int py) {
 		//TODO green does not exist
-		super(px, py, level, "Assets/greenMushroom");
+		super(px, py, "Assets/greenMushroom");
 		// TODO Auto-generated constructor stub
 	}
 

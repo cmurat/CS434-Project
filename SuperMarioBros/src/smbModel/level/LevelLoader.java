@@ -18,12 +18,6 @@ import smbModel.entities.tiles.Floor;
 
 public class LevelLoader {
 	
-//
-//	public static void main(String[] args){
-//		System.out.println(new LevelLoader().loadLevel());
-//		
-//	}
-	
 	public Level loadLevel() {
 		Map map = createMap();
 		Level level = createLevel(map);
@@ -113,11 +107,10 @@ public class LevelLoader {
 		Enemy enemy = null;
 		switch(tileChar) {
 		case 'w':
-			System.out.println("girdi");
-			enemy = new Shellcreeper(row, column, null);
+			enemy = new Shellcreeper(row, column);
 			break;
 		case 'y':
-			enemy = new Sidestepper(row, column, null);
+			enemy = new Sidestepper(row, column);
 			break;
 		}
 		return enemy;
@@ -127,8 +120,7 @@ public class LevelLoader {
 		Item item = null;
 		switch(tileChar) {
 		case 'r':
-			System.out.println("girddiii");
-			item = new RedMushroom(row, column, null);
+			item = new RedMushroom(row, column);
 			break;
 		}
 		return item;

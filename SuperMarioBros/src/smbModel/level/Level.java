@@ -18,6 +18,7 @@ public class Level {
 	private ArrayList<Enemy> enemies;
 	private ArrayList<Item> items;
 	private ArrayList<Entity> entitiesToDelete;
+	private ArrayList<MovingEntity> entitiesToAdd;
 	
 	Player playerCharacter;
 
@@ -25,22 +26,34 @@ public class Level {
 		this.map = map;
 		this.enemies = enemies;
 		this.items = items;
-		this.playerCharacter = new Mario(12, 2, this);
+		this.playerCharacter = new Mario(12, 2);
+		playerCharacter.setLevel(this);
 		this.entities = new ArrayList<MovingEntity>();
 		this.entitiesToDelete = new ArrayList<Entity>();
+		this.entitiesToAdd = new ArrayList<MovingEntity>();
 		this.entities.add(playerCharacter);
 		this.entities.addAll(enemies);
 		this.entities.addAll(items);
 
 		setLevelOfEntities(enemies);
 		setLevelOfEntities(items);
+		setLEvetOfTiles();
 	}
 
-	private void setLevelOfEntities(
-			ArrayList<? extends MovingEntity> movingEntities) {
-		for (MovingEntity movingEntity : movingEntities) {
-			movingEntity.setLevel(this);
+	private void setLevelOfEntities(ArrayList<? extends Entity> entities) {
+		for (Entity entity : entities) {
+			entity.setLevel(this);
 		}
+	}
+	
+	private void setLEvetOfTiles() {
+		Tile[][] tiles = map.getTiles();
+		for (int i = 0; i < tiles.length; i++) {
+			for (int j = 0; j < tiles[0].length; j++) {
+				tiles[i][j].setLevel(this);
+			}
+		}
+		
 	}
 
 	public Map getMap() {
@@ -61,6 +74,10 @@ public class Level {
 
 	public ArrayList<MovingEntity> getEntities() {
 		return entities;
+	}
+	
+	public ArrayList<MovingEntity> getEntitiesToAdd() {
+		return entitiesToAdd;
 	}
 
 	public String toString() {
@@ -96,12 +113,24 @@ public class Level {
 
 	public void addEntitiesToDelete(Entity entity) {
 		entitiesToDelete.add(entity);	
-		entity = null;
+		map.removeTile(entity);
+	}
+	
+	public void addEntity(MovingEntity entity) {
+		entitiesToAdd.add(entity);
+		entity.setLevel(this);
+	}
+	
+	public void removeAddedEntities() {
+		entitiesToAdd.clear();
 	}
 	
 	public void removeEntities() {
 		entities.removeAll(entitiesToDelete);
 		enemies.removeAll(entitiesToDelete);
+		entities.addAll(entitiesToAdd);
+		entitiesToAdd.clear();
+		entitiesToDelete.clear();
 	}
 
 

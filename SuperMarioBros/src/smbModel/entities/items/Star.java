@@ -7,8 +7,8 @@ import smbModel.level.Level;
 
 public class Star extends Item {
 
-	public Star(int px, int py, Level level) {
-		super(px, py, level, " ");
+	public Star(int px, int py) {
+		super(px, py, " ");
 		// TODO Auto-generated constructor stub
 	}
 

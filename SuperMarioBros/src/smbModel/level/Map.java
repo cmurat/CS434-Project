@@ -3,7 +3,9 @@ package smbModel.level;
 import java.awt.Point;
 import java.util.Arrays;
 
+import smbModel.Entity;
 import smbModel.entities.Tile;
+import smbModel.entities.tiles.BlankTile;
 
 public class Map {
 	private char[][] charMap;
@@ -45,4 +47,12 @@ public class Map {
 			System.out.println(Arrays.toString(tiles[i]));
 		}
 	}
-}
+	
+	public void removeTile(Entity tile) {
+		int i = (int) (tile.getY()/Tile.BASE_SIZE);
+		int j = (int) (tile.getX()/Tile.BASE_SIZE);
+		tiles[i][j] = new BlankTile(i, j);
+		System.out.println(tile.getClass());
+		tile = null;
+	}
+ }

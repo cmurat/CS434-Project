@@ -7,8 +7,8 @@ import smbModel.level.Level;
 
 public class Mushroom extends Item {
 
-	public Mushroom(int px, int py, Level level, String imagePath) {
-		super(px, py, level, imagePath);
+	public Mushroom(int px, int py, String imagePath) {
+		super(px, py, imagePath);
 		// TODO Auto-generated constructor stub
 	}
 

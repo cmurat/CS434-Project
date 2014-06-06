@@ -5,92 +5,43 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.sound.sampled.ReverbType;
+
 import smbModel.Command;
+import smbModel.commands.CollideCommand;
 import smbModel.commands.collisionCommands.util.BoundingRectangle;
 import smbModel.entities.MovingEntity;
+import smbModel.entities.Player;
 
-public class CollideTileCommand extends Command {
+public class CollideTileCommand extends CollideCommand {
 
 	@Override
-	public void execute(MovingEntity entity) {
-		Point senderLocation = sender.getLocation();
-		Point entityLocation = entity.getLocation();
-		List<BoundingRectangle> boundingRectangles = createBoundingRectangles(entity
-				.getBounds());
-
-		double dx = senderLocation.getX() - entityLocation.getX();
-		double dy = senderLocation.getY() - entityLocation.getY();
-
-		for (BoundingRectangle boundingRectangle : boundingRectangles) {
-			if (boundingRectangle.intersects(sender.getBounds())) {
-				if (boundingRectangle.getPosition().equals("left")) {
-					entity.stopHorizontally();
-					entity.changeX((dx + sender.getBounds().getWidth()));
-				} else if (boundingRectangle.getPosition().equals("right")) {
-					entity.changeX((dx - entity.getBounds().getWidth()));
-					entity.stopHorizontally();
-				} else if (boundingRectangle.getPosition().equals("top")) {
-					entity.stopVertically();
-					entity.changeY(dy + sender.getBounds().getHeight());
-				} else if (boundingRectangle.getPosition().equals("bottom")) {
-					entity.stopVertically();
-					entity.setCanGoDown(false);
-					entity.changeY(dy - entity.getBounds().getHeight());
-				}
-
-			}
-		}
-
-		// if (Math.abs(dx) > Math.abs(dy)) {
-		// if (dx < 0) {
-		// entity.stopLeft();
-		// }
-		//
-		// if (dx > 0) {
-		// entity.stopRight();
-		// }
-		// }
-		//
-		// if (Math.abs(dx) < Math.abs(dy)) {
-		// if (dy < 0) {
-		// entity.stopUp();
-		// entity.changeY(1);
-		// }
-		//
-		// if (dy > 0) {
-		// System.out.println("down collision");
-		// entity.setCanGoDown(false);
-		// entity.stopDown();
-		// entity.changeY(-1);
-		// }
-		// }
+	protected void leftCollision() {
+		receiver.stopHorizontally();
+		receiver.changeX((dx + sender.getBounds().getWidth()));
 	}
 
-	public List<BoundingRectangle> createBoundingRectangles(Rectangle r) {
-		List<BoundingRectangle> list = new ArrayList<BoundingRectangle>();
-		int brWidth = 3;
-		int tamponHeight = 8;
+	@Override
+	protected void rightCollision() {
+		receiver.changeX((dx - receiver.getBounds().getWidth()));
+		receiver.stopHorizontally();
+	}
 
-		// Create left rectangle
-		Rectangle left = new Rectangle(r.x - 5, r.y + tamponHeight, brWidth,
-				r.height - tamponHeight - 5);
-		list.add(new BoundingRectangle(left, "left"));
+	@Override
+	protected void upCollision() {
+		if (receiver instanceof Player) {
+			sender.removeFromView();
+		}
+		receiver.stopVertically();
+		receiver.changeY(dy + sender.getBounds().getHeight());
 
-		// Create top rectangle
-		Rectangle top = new Rectangle(r.x, r.y - 15, r.width, brWidth);
-		list.add(new BoundingRectangle(top, "top"));
+	}
 
-		// Create right rectangle
-		Rectangle right = new Rectangle(r.x + r.width - brWidth + 5, r.y
-				+ tamponHeight, brWidth, r.height - tamponHeight - 5);
-		list.add(new BoundingRectangle(right, "right"));
-
-		// Create bottom rectangle
-		Rectangle bottom = new Rectangle(r.x, r.y + r.height - brWidth + 15,
-				r.width, brWidth + 5);
-		list.add(new BoundingRectangle(bottom, "bottom"));
-
-		return list;
+	@Override
+	protected void downCollision() {
+		receiver.stopVertically();
+		receiver.setCanGoDown(false);
+		receiver.changeY(dy - receiver.getBounds().getHeight());
 	}
 
 }

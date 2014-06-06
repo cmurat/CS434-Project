@@ -4,11 +4,14 @@ import smbModel.entities.MovingEntity;
 
 public abstract class Command {
 	protected Entity sender;
-	
+	protected MovingEntity receiver;
 
 	public void setSender(Entity sender) {
 		this.sender = sender;
 	}
-	public abstract void execute(MovingEntity entity);
+	
+	public void execute(MovingEntity receiver) {
+		this.receiver = receiver;
+	}
 
 }

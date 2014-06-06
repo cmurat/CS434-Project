@@ -4,8 +4,11 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
 
+import smbModel.level.Level;
+
 public abstract class Entity {
 	protected String imagePath; 
+	protected Level level;
 	
 	public static final int BASE_SIZE = 32;
 	
@@ -69,7 +72,13 @@ public abstract class Entity {
 		bounds.setSize(width, height);
 	}
 	
-	public abstract void removeFromView();
+	public void removeFromView() {
+		level.addEntitiesToDelete(this);
+	}
+
+	public void setLevel(Level level) {
+		this.level = level;
+	}
 	
 	public abstract Command collide();
 }

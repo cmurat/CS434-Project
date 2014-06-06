@@ -5,13 +5,13 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 
 import smbModel.Entity;
+import smbModel.entities.tiles.BrickPiece;
 import smbModel.level.Level;
 
 public abstract class MovingEntity extends Entity {
 	public static final double ACCELERATION = 0.25;
 	public static final double MAX_SPEED = 8;
 
-	protected Level level;
 	protected double horizontalSpeed;
 	protected double verticalSpeed;
 	protected double horizontalAcceleration;
@@ -25,13 +25,13 @@ public abstract class MovingEntity extends Entity {
 	protected boolean horizontallyCollidedWithTile = false;
 
 	public HorizontalDirection horizontalDirection;
+	public VerticalDirection verticalDirection;
 
 	protected int count = 0;
 	protected Point prevLocation = new Point(0, 0);
 
-	public MovingEntity(int row, int column, Level level, String imagePath) {
+	public MovingEntity(int row, int column, String imagePath) {
 		super(row, column, imagePath);
-		setLevel(level);
 		horizontalDirection = HorizontalDirection.Idle;
 	}
 
@@ -51,6 +51,7 @@ public abstract class MovingEntity extends Entity {
 					&& movingEntity.bounds != bounds) {
 				movingEntity.collide().execute(this);
 			}
+			
 		}
 
 		ArrayList<Tile> tiles = level.getRespectiveTiles(getLocation());
@@ -62,7 +63,7 @@ public abstract class MovingEntity extends Entity {
 		}
 	}
 
-	private void checkDown() {
+	protected void checkDown() {
 		Rectangle stepDownRectangle = new Rectangle(bounds.x, bounds.y
 				+ bounds.height, bounds.width, (int) MAX_SPEED / 2);
 		ArrayList<Tile> tiles = level.getRespectiveTiles(stepDownRectangle
@@ -162,10 +163,6 @@ public abstract class MovingEntity extends Entity {
 		verticalAcceleration = 0;
 	}
 
-	public void setLevel(Level level) {
-		this.level = level;
-	}
-
 	public double getX() {
 		return super.getX();
 	}
@@ -198,5 +195,9 @@ public abstract class MovingEntity extends Entity {
 
 	public boolean isIdle() {
 		return idle;
+	}
+	
+	public boolean isJumping() {
+		return jumping;
 	}
 }

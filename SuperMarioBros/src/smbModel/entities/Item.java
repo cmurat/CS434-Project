@@ -10,8 +10,8 @@ public abstract class Item extends MovingEntity {
 	public static final int FLOWER = 3;
 	public static final int STAR = 4;
 	
-	public Item(int px, int py, Level level, String imagePath) {
-		super(px, py, level,imagePath);
+	public Item(int px, int py, String imagePath) {
+		super(px, py, imagePath);
 		// TODO Auto-generated constructor stub
 	}
 	

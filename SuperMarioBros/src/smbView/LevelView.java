@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import smbModel.Entity;
 import smbModel.entities.Enemy;
 import smbModel.entities.Item;
+import smbModel.entities.MovingEntity;
 import smbModel.entities.Tile;
 import smbModel.level.Level;
 import smbModel.level.Map;
@@ -19,7 +20,7 @@ public class LevelView extends JPanel {
 	Map map;
 	ArrayList<EntityView> entityViews;
 	ArrayList<EntityView> entityViewsToDelete;
-	ArrayList<JLabel> tileViews;
+	ArrayList<EntityView> tileViews;
 	EntityView playerView;
 
 	public LevelView(Level level) {
@@ -27,7 +28,7 @@ public class LevelView extends JPanel {
 		this.map = level.getMap();
 		this.entityViews = new ArrayList<EntityView>();
 		this.entityViewsToDelete = new ArrayList<EntityView>();
-		this.tileViews = new ArrayList<JLabel>();
+		this.tileViews = new ArrayList<EntityView>();
 		System.out.println(level.getPlayer().getImagePath());
 		this.playerView = new EntityView(level.getPlayer());
 
@@ -43,15 +44,16 @@ public class LevelView extends JPanel {
 	}
 
 	private void createTileViews() {
-		JLabel tileView = null;
+		EntityView tileView = null;
 		for (int i = 0; i < map.getTiles().length; i++) {
 			for (int j = 0; j < map.getTiles()[0].length; j++) {
 				Tile tile = map.getTiles()[i][j];
 				if (tile != null) {
-					tileView = new JLabel(new ImageIcon(tile.getImagePath()));
-					tileView.setLocation(tile.getLocation());
-					tileView.setSize(Entity.BASE_SIZE, Entity.BASE_SIZE);
+					tileView = new EntityView(tile);
+					tileView.setImage(tile.getImagePath());
+					tileView.refresh();
 					tileViews.add(tileView);
+					entityViews.add(tileView);
 				}
 			}
 		}
@@ -66,6 +68,7 @@ public class LevelView extends JPanel {
 		for (Item item : items) {
 			entityViews.add(new EntityView(item));
 		}
+		
 	}
 
 	private void addPlayerView() {
@@ -90,23 +93,26 @@ public class LevelView extends JPanel {
 
 	private void refreshEntites() {
 		ArrayList<Entity> entities = level.getEntitiesToDelete();
-
 		for (EntityView entityView : entityViews) {
 			if (entities.contains(entityView.entity)) {
 				entityViewsToDelete.add(entityView);
-				entityView.entity = null;
-			}
-		}
-
-		for (EntityView entityView : entityViews) {
-			if (entityView.entity == null) {
 				remove(entityView);
-				repaint();
-			} else {
-				entityView.refresh();
-			}
-
+			} 	
 		}
+		
+		for (EntityView entityView : entityViews) {
+				entityView.refresh();
+		}
+		
+		ArrayList<MovingEntity> entitiesToAdd = level.getEntitiesToAdd();
+		for (Entity entity : entitiesToAdd) {
+			EntityView entityView = new EntityView(entity);
+			entityViews.add(entityView);
+			add(entityView);
+			entityView.refresh();
+		}
+		
+		repaint();
 		entityViews.removeAll(entityViewsToDelete);
 	}
 }

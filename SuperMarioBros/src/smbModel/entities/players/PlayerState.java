@@ -18,7 +18,7 @@ public abstract class PlayerState {
 	private int walkTime = 100;
 	private int numberOfWalkImages = 3;
 	private String className = this.getClass().getSimpleName();
-	
+
 	HorizontalDirection previousDirection;
 
 	public PlayerState(Player player, String imagePath) {
@@ -27,9 +27,9 @@ public abstract class PlayerState {
 		previousDirection = HorizontalDirection.Right;
 		setTimer();
 	}
-	
+
 	public void setTimer() {
-		horizontalAnimationTimer = new Timer(walkTime, new ActionListener()  {
+		horizontalAnimationTimer = new Timer(walkTime, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				horizontalAnimationTimer.stop();
@@ -47,22 +47,25 @@ public abstract class PlayerState {
 
 	public void refresh() {
 		setHorizontalImage();
-		setVerticalImage();
+		if (player.isJumping()) {
+			setVerticalImage();
+		}
 	}
 
 	protected void setVerticalImage() {
-		
+			setImagePath("Assets/MarioImages/" + className + "/marioJump"
+					+ previousDirection.name() + ".png");
 	}
 
 	protected void setHorizontalImage() {
 		if (!horizontalAnimationTimer.isRunning()) {
 			horizontalAnimationTimer.start();
-			
+
 			String direction = player.horizontalDirection.name();
 
 			if (player.horizontalDirection == HorizontalDirection.Idle) {
-					setImagePath("Assets/MarioImages/" + className
-							+ "/marioIdle" + previousDirection.name() + ".png");
+				setImagePath("Assets/MarioImages/" + className + "/marioIdle"
+						+ previousDirection.name() + ".png");
 			} else {
 				setImagePath("Assets/MarioImages/" + className + "/mario"
 						+ direction + (walkCount + 1) + ".png");

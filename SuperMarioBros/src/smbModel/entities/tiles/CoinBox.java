@@ -14,4 +14,7 @@ public class CoinBox extends Tile {
 	public String toString() {
 		return "c";
 	}
+	
+	public void removeFromView() {
+	}
 }

@@ -10,8 +10,8 @@ public class Enemy extends MovingEntity {
 	
 	private double prevHorizontalSpeed;
 	
-	public Enemy(int px, int py, Level level, String imagePath) {
-		super(px, py, level, imagePath);
+	public Enemy(int px, int py, String imagePath) {
+		super(px, py, imagePath);
 		horizontalSpeed = -MAX_SPEED/4;
 		continueHorizontally = true;
 	}
@@ -31,11 +31,4 @@ public class Enemy extends MovingEntity {
 		command.setSender(this);
 		return command;
 	}
-
-	@Override
-	public void removeFromView() {
-		level.addEntitiesToDelete(this);
-	}
-
-
 }

@@ -12,8 +12,8 @@ public class Player extends MovingEntity {
     private static CollidePlayerCommand command = new CollidePlayerCommand();
    
     
-	public Player(int px, int py, Level level) {
-		super(px, py, level, null);
+	public Player(int px, int py) {
+		super(px, py, null);
 		setState(new Original(this));
 	}	
 	
