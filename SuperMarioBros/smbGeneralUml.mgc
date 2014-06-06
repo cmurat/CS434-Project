@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClassDiagram>
+    <Class name="smbModel.entities.Player" x="468" y="520">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="smbModel.entities.MovingEntity"/>
+        <Association
+            destinationClassName="smbModel.commands.collisionCommands.CollidePlayerCommand"
+            endpointName="command" kind="Simple"/>
+        <Association
+            destinationClassName="smbModel.entities.players.PlayerState"
+            endpointName="state" kind="Simple"/>
+        <Communication destinationClassName="smbModel.Command"/>
+        <Communication destinationClassName="smbModel.entities.MovingEntity"/>
+        <Communication destinationClassName="smbModel.MusicPlayer"/>
+        <Communication destinationClassName="smbModel.entities.players.PlayerState"/>
+    </Class>
+    <Class name="smbModel.commands.collisionCommands.CollideTileCommand"
+        x="1424" y="793">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="smbModel.commands.CollideCommand"/>
+        <Communication destinationClassName="smbModel.Entity"/>
+        <Communication destinationClassName="smbModel.entities.MovingEntity"/>
+    </Class>
+    <Class name="smbController.GameController" x="274" y="79">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="smbModel.Game"
+            endpointName="game" kind="Simple"/>
+        <Association destinationClassName="smbView.GameScreen"
+            endpointName="gameScreen" kind="Simple"/>
+        <Communication destinationClassName="smbModel.Game"/>
+        <Communication destinationClassName="smbView.GameScreen"/>
+        <Communication destinationClassName="smbModel.MusicPlayer"/>
+    </Class>
+    <Class name="smbModel.Game" x="220" y="260">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="smbModel.level.Level"
+            endpointName="level" kind="Simple"/>
+        <Association destinationClassName="smbModel.level.LevelLoader"
+            endpointName="loader" kind="Simple"/>
+        <Communication destinationClassName="smbModel.level.LevelLoader"/>
+        <Communication destinationClassName="smbModel.level.Level"/>
+    </Class>
+    <Class name="smbModel.entities.tiles.Floor" x="1694" y="603">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="smbModel.entities.Tile"/>
+    </Class>
+    <Class name="smbModel.entities.Item" x="280" y="832">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="smbModel.entities.MovingEntity"/>
+        <Communication destinationClassName="smbModel.Command"/>
+        <Communication destinationClassName="smbModel.Entity"/>
+        <Communication destinationClassName="smbModel.level.Level"/>
+    </Class>
+    <Class
+        name="smbModel.commands.collisionCommands.util.BoundingRectangle"
+        x="1476" y="31">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="smbModel.entities.players.states.Original" x="932" y="786">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="smbModel.entities.players.PlayerState"/>
+        <Communication destinationClassName="smbModel.entities.Player"/>
+    </Class>
+    <Class name="smbModel.entities.items.Mushroom" x="150" y="957">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="smbModel.entities.Item"/>
+        <Communication destinationClassName="smbModel.Entity"/>
+    </Class>
+    <Class name="smbModel.entities.items.Star" x="197" y="786">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="smbModel.entities.Item"/>
+    </Class>
+    <Class name="smbModel.Command" x="1602" y="984">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="smbModel.Entity"
+            endpointName="sender" kind="Simple"/>
+        <Association
+            destinationClassName="smbModel.entities.MovingEntity"
+            endpointName="receiver" kind="Simple">
+            <Point x="1233" y="1189"/>
+        </Association>
+    </Class>
+    <Class name="smbModel.entities.players.states.Fiery" x="742" y="686">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="smbModel.entities.players.PlayerState"/>
+        <Communication destinationClassName="smbModel.entities.Player"/>
+        <Communication destinationClassName="smbModel.Entity"/>
+    </Class>
+    <Class name="smbView.GameScreen" x="774" y="51">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="smbView.LevelView"
+            endpointName="levelView" kind="Simple"/>
+        <Association destinationClassName="smbController.GameController"
+            endpointName="controller" kind="Simple"/>
+        <Communication destinationClassName="smbController.GameController"/>
+        <Communication destinationClassName="smbView.LevelView"/>
+    </Class>
+    <Class name="smbModel.entities.enemies.Shellcreeper" x="-15" y="1047">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="smbModel.entities.Enemy"/>
+    </Class>
+    <Class name="smbModel.entities.MovingEntity" x="579" y="1144">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="smbModel.Entity">
+            <Point x="1016" y="958"/>
+        </Extension>
+        <Association
+            destinationClassName="smbModel.entities.HorizontalDirection"
+            endpointName="horizontalDirection" kind="Simple"/>
+        <Association
+            destinationClassName="smbModel.entities.VerticalDirection"
+            endpointName="verticalDirection" kind="Simple"/>
+        <Communication destinationClassName="smbModel.Command"/>
+        <Communication destinationClassName="smbModel.Entity"/>
+        <Communication destinationClassName="smbModel.level.Level"/>
+    </Class>
+    <Class name="smbModel.entities.items.Coin" x="180" y="844">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="smbModel.entities.Item"/>
+    </Class>
+    <Class name="smbView.ItemView" x="1692" y="24">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="smbModel.MusicPlayer" x="1248" y="28">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="smbModel.entities.players.states.Grown" x="867" y="711">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="smbModel.entities.players.PlayerState"/>
+        <Communication destinationClassName="smbModel.entities.Player"/>
+        <Communication destinationClassName="smbModel.Entity"/>
+    </Class>
+    <Class name="smbModel.entities.HorizontalDirection" x="687" y="996">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="smbModel.level.Level" x="285" y="430">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="smbModel.entities.Enemy"
+            endpointName="enemies" kind="Simple"/>
+        <Association
+            destinationClassName="smbModel.entities.MovingEntity"
+            endpointName="entitiesToAdd" kind="Simple"/>
+        <Association destinationClassName="smbModel.entities.Item"
+            endpointName="items" kind="Simple"/>
+        <Association destinationClassName="smbModel.Entity"
+            endpointName="entitiesToDelete" kind="Simple"/>
+        <Association destinationClassName="smbModel.level.Map"
+            endpointName="map" kind="Simple"/>
+        <Association destinationClassName="smbModel.entities.Player"
+            endpointName="playerCharacter" kind="Simple"/>
+        <Association
+            destinationClassName="smbModel.entities.MovingEntity"
+            endpointName="entities" kind="Simple"/>
+        <Communication destinationClassName="smbModel.Command"/>
+        <Communication destinationClassName="smbModel.Entity"/>
+        <Communication destinationClassName="smbModel.entities.MovingEntity"/>
+        <Communication destinationClassName="smbModel.level.Map"/>
+    </Class>
+    <Class name="smbModel.entities.VerticalDirection" x="824" y="1183">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="smbModel.Entity" x="1133" y="479">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="smbModel.level.Level"
+            endpointName="level" kind="Simple"/>
+        <Communication destinationClassName="smbModel.level.Level"/>
+    </Class>
+    <Class name="smbModel.commands.movementCommands.MovementCommand"
+        x="1490" y="1094">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="smbModel.Command"/>
+        <Communication destinationClassName="smbModel.entities.MovingEntity"/>
+    </Class>
+    <Class name="smbView.ScoreBoard" x="1689" y="91">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="smbModel.level.LevelLoader" x="512" y="255">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="smbModel.level.Map"/>
+    </Class>
+    <Class name="SuperMarioBros" x="1520" y="117">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="smbController.GameController"/>
+    </Class>
+    <Class name="smbModel.entities.items.mushrooms.RedMushroom" x="325" y="1022">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="smbModel.entities.items.Mushroom"/>
+    </Class>
+    <Class
+        name="smbModel.commands.collisionCommands.EmptyCollisionCommand"
+        x="1740" y="1209">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="smbModel.Command"/>
+    </Class>
+    <Class name="smbView.EntityView" x="1164" y="270">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="smbModel.Entity"
+            endpointName="entity" kind="Simple"/>
+        <Communication destinationClassName="smbModel.Entity"/>
+    </Class>
+    <Class name="smbModel.entities.Tile" x="1501" y="672">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="smbModel.Entity"/>
+        <Association
+            destinationClassName="smbModel.commands.collisionCommands.CollideTileCommand"
+            endpointName="command" kind="Simple"/>
+        <Communication destinationClassName="smbModel.Command"/>
+    </Class>
+    <Class name="smbModel.entities.Enemy" x="-87" y="849">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="smbModel.entities.MovingEntity">
+            <Point x="292" y="1180"/>
+        </Extension>
+        <Association
+            destinationClassName="smbModel.commands.collisionCommands.CollideEnemyCommand"
+            endpointName="command" kind="Simple">
+            <Point x="428" y="1472"/>
+        </Association>
+        <Communication destinationClassName="smbModel.Command"/>
+        <Communication destinationClassName="smbModel.Entity"/>
+    </Class>
+    <Class name="smbModel.commands.CollideCommand" x="1164" y="868">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="smbModel.Command"/>
+        <Communication destinationClassName="smbModel.Entity"/>
+        <Communication destinationClassName="smbModel.commands.collisionCommands.util.BoundingRectangle"/>
+    </Class>
+    <Class name="smbModel.entities.players.PlayerState" x="760" y="795">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="smbModel.entities.Player"
+            endpointName="player" kind="Simple"/>
+        <Association
+            destinationClassName="smbModel.entities.HorizontalDirection"
+            endpointName="previousDirection" kind="Simple"/>
+        <Communication destinationClassName="smbModel.entities.MovingEntity"/>
+    </Class>
+    <Class name="smbModel.commands.collisionCommands.CollideItemCommand"
+        x="1176" y="1029">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="smbModel.commands.CollideCommand"/>
+        <Communication destinationClassName="smbModel.entities.Player"/>
+        <Communication destinationClassName="smbModel.Entity"/>
+        <Communication destinationClassName="smbModel.entities.players.PlayerState"/>
+    </Class>
+    <Class
+        name="smbModel.commands.collisionCommands.CollideEnemyCommand"
+        x="758" y="1507">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="smbModel.commands.CollideCommand"/>
+        <Communication destinationClassName="smbModel.entities.Player"/>
+        <Communication destinationClassName="smbModel.Entity"/>
+        <Communication destinationClassName="smbModel.entities.players.PlayerState"/>
+    </Class>
+    <Class name="smbModel.entities.tiles.BlankTile" x="1914" y="876">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="smbModel.entities.Tile"/>
+        <Association
+            destinationClassName="smbModel.commands.collisionCommands.EmptyCollisionCommand"
+            endpointName="command" kind="Simple"/>
+    </Class>
+    <Class name="smbModel.entities.enemies.Sidestepper" x="-97" y="1010">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="smbModel.entities.Enemy"/>
+    </Class>
+    <Class
+        name="smbModel.commands.collisionCommands.CollidePlayerCommand"
+        x="846" y="623">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="smbModel.commands.CollideCommand"/>
+    </Class>
+    <Class name="smbView.LevelView" x="929" y="193">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="smbView.EntityView"
+            endpointName="entityViewsToDelete" kind="Simple">
+            <Point x="1086" y="266"/>
+        </Association>
+        <Association destinationClassName="smbModel.level.Level"
+            endpointName="level" kind="Simple">
+            <Point x="756" y="326"/>
+        </Association>
+        <Association destinationClassName="smbView.EntityView"
+            endpointName="playerView" kind="Simple">
+            <Point x="1205" y="218"/>
+        </Association>
+        <Association destinationClassName="smbView.EntityView"
+            endpointName="entityViews" kind="Simple">
+            <Point x="1054" y="304"/>
+        </Association>
+        <Association destinationClassName="smbModel.level.Map"
+            endpointName="map" kind="Simple"/>
+        <Association destinationClassName="smbView.EntityView"
+            endpointName="tileViews" kind="Simple">
+            <Point x="1106" y="388"/>
+        </Association>
+        <Communication destinationClassName="smbModel.level.Map"/>
+        <Communication destinationClassName="smbView.EntityView"/>
+        <Communication destinationClassName="smbModel.level.Level"/>
+    </Class>
+    <Class name="smbModel.entities.items.Flower" x="162" y="894">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="smbModel.entities.Item"/>
+    </Class>
+    <Class name="smbModel.entities.players.Mario" x="724" y="542">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="smbModel.entities.Player"/>
+    </Class>
+    <Class name="smbModel.entities.items.mushrooms.GreenMushroom"
+        x="259" y="1076">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="smbModel.entities.items.Mushroom"/>
+    </Class>
+    <Class name="smbModel.level.Map" x="754" y="373">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="smbModel.Entity"/>
+    </Class>
+    <Class name="smbView.PlayerListener" x="33" y="135">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="smbController.GameController"
+            endpointName="controller" kind="Simple"/>
+        <Communication destinationClassName="smbController.GameController"/>
+    </Class>
+    <Class name="smbModel.entities.tiles.CoinBox" x="1848" y="756">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="smbModel.entities.Tile"/>
+        <Communication destinationClassName="smbModel.Entity"/>
+        <Communication destinationClassName="smbModel.level.Level"/>
+    </Class>
+    <Class name="smbModel.entities.tiles.Brick" x="1774" y="675">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="smbModel.entities.Tile"/>
+        <Communication destinationClassName="smbModel.MusicPlayer"/>
+        <Communication destinationClassName="smbModel.level.Level"/>
+        <Communication destinationClassName="smbModel.entities.tiles.BrickPiece"/>
+    </Class>
+    <Class name="smbModel.entities.tiles.BrickPiece" x="1232" y="1253">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="smbModel.entities.MovingEntity"/>
+        <Association
+            destinationClassName="smbModel.commands.collisionCommands.EmptyCollisionCommand"
+            endpointName="command" kind="Simple"/>
+    </Class>
+</ClassDiagram>
